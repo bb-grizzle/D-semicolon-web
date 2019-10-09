@@ -1,0 +1,38 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+body{
+	background-color: #F8F8F8;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*font*/
+@font-face {
+	font-family: 'Bodoni';
+	src: url(../font/BOD_B.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: 'Dejavu';
+	src: url(../font/DejaVuSerif.ttf) format('truetype');
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'Dejavu';
+	src: url(../font/DejaVuSerif-Bold.ttf) format('truetype');
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Dejavu';
+	src: url(../font/DejaVuSerif-Italic.ttf) format('truetype');
+	font-style: italic;
+}
+
+
+

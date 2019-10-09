@@ -1,0 +1,176 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+
+body{
+	background-color: #F8F8F8;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+/*font*/
+@font-face {
+	font-family: 'Bodoni';
+	src: url(../font/BodoniStd.otf) format('opentype');
+}
+@font-face {
+	font-family: 'Bodoni';
+	src: url(../font/BodoniStd-Bold) format('opentype');
+	font-weight: 700;
+}
+
+
+
+.text-title{
+	font-family: Bodoni;
+	font-size: 20pt;
+	font-weight: 400;
+	margin: 100px 0 16px 0;
+}
+
+p{
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-bottom: 56px;
+	font-size: 10pt;
+	opacity: 0.5;
+	font-weight: 300;
+	line-height: 1.7;
+}
+
+/*color*/
+.color-main{
+	color: black;
+}
+
+/*header*/
+header{
+	height: 48px;
+}
+
+.full{
+	width: 100%;
+	height: 100vh;
+}
+.con{
+	width: 80%;
+	margin: auto;
+	
+}
+
+header .con{
+	border-bottom: 1px solid black;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.header-logo{
+	height: 100%;
+}
+
+.header-logo a{
+	height: 100%;
+	display: inline-block;
+}
+
+.header-logo img{
+	height: 100%;
+}
+
+.header-gnb{
+	height: 100%;
+}
+
+.header-gnb ul{
+	display: flex;
+	height: 100%;
+	align-items: center;
+	
+}
+
+.header-gnb li{
+	margin-left: 40px;
+	text-transform: capitalize;
+	font-family: Bodoni;
+	font-weight: 400;
+	opacity: 0.5;
+}
+
+.header-gnb .gnb-active{
+	opacity: 1;
+}
+
+.header-gnb li a{
+	color: black;
+}
+
+body{
+	background-color: #F8F8F8;
+}
+
+/*section - intro */
+
+.intro .full{
+	position: absolute;
+	box-sizing: border-box;
+	top: 0;
+}
+.intro-box{
+	width: 24vw;
+	height: 24vw;
+	position: relative;
+	top: calc( 50vh - 12vw);
+	margin: auto;
+	position: relative;
+}
+
+.intro-bg{
+	width: 100%;
+	
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	z-index: -1;
+}
+
+.intro-semi img{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.semi-none{
+	display: block;
+}
+
+/*intro-02*/
+.intro-02{
+	position: relative;
+	top: 100vh;
+}
+
+.intro-02 .con{
+	border-top: 1px solid black;
+}
+
+.sec-text{
+	width: 100%;
+}
+
+.sec-text p{
+	width: 50%;
+}
+
+.sec02-bg{
+	width: 100%;
+	height: 400px;
+	background-image: url(../image/bg01.png);
+	background-size: cover;
+	background-position: center;
+	
+}
+
+
