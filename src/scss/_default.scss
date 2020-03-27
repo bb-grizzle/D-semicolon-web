@@ -1,0 +1,30 @@
+@mixin border-test-b {
+  border: 2px solid black;
+}
+@mixin border-test-r {
+  border: 2px solid red;
+}
+
+
+// font family
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.div::after{
+  content: '';
+  display: block;
+  height: 1px;
+  color: $color-main;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: $color-main;
+}
+
+.con{
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+}

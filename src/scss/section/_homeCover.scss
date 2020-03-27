@@ -1,0 +1,23 @@
+.HomeCover{
+  height: 100vh;
+  .con{
+    height: 100%;
+    position: relative;
+  }
+  .wrap-img{
+    height: 100%;
+    >img{
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &.intro{
+        width: 80%;
+      }
+      &.semicolon{
+        width: 60%;
+      }
+    }
+  }
+}

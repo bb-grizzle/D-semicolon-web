@@ -1,0 +1,141 @@
+// media-query
+$screen-xl-min: 1200px;
+$screen-lg-min: 992px;
+$screen-md-min: 768px;
+$screen-sm-min: 576px;
+
+// color
+$color-main: #000000;
+$color-gray-default: #808080;
+$color-gray-light: #F8F8F8;
+$color-white: #ffffff;
+
+
+@mixin screen-xl {
+ // full size screen
+ @media screen  and (min-width: $screen-xl-min){
+   @content;
+ }
+}
+
+@mixin screen-lg {
+ @media screen and (max-width: $screen-xl-min){
+   @content;
+ }
+}
+
+@mixin screen-lg-portrait{
+ @media screen and (max-width: $screen-xl-min) and (orientation: portrait){
+   @content;
+ }
+}
+
+@mixin screen-md {
+  //  and (hover: none) and (pointer: coarse)
+ @media screen and (max-width: $screen-lg-min){
+   @content;
+ }
+}
+
+@mixin screen-md-portrait {
+  //  and (hover: none) and (pointer: coarse)
+ @media screen and (max-width: $screen-lg-min) and (orientation: portrait){
+   @content;
+ }
+}
+
+
+@mixin screen-sm {
+  //  and (hover: none) and (pointer: coarse)
+ @media screen and (max-width: $screen-md-min){
+   @content;
+ }
+}
+
+@mixin touchscreen{
+  @media (hover: none) and (pointer: coarse){
+    @content;
+  }
+}
+
+@mixin pcscreen{
+  @media (hover: hover) and (pointer: coarse){
+    @content;
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+img{
+  vertical-align: top;
+}
+
+@font-face{
+  font-family: bodoni-bold;
+  src: url(../font/BodoniStd-Bold.otf);
+}
+@font-face{
+  font-family: bodoni-book;
+  src: url(../font/BodoniStd-Book.otf);
+}
+
+
+@mixin h1 {
+  font-family: bodoni-bold;
+  font-size: 40px;
+  @include screen-md{
+    font-size: 20px;
+  }
+}
+
+@mixin h2 {
+  font-family: bodoni-book;
+  font-size: 24px;
+  @include screen-md{
+    font-size: 20px
+  }
+}
+
+@mixin h3 {
+  font-weight: 700;
+  font-size: 24px;
+  @include screen-md{
+    font-size: 18px;
+  }
+}
+
+@mixin gnb-active {
+  font-family: bodoni-book;
+  font-size: 24px;
+  color: $color-main;
+  @include screen-md{
+    font-size: 16px;
+  } 
+}
+
+@mixin gnb-default {
+  font-family: bodoni-book;
+  font-size: 24px;
+  color: $color-gray-default;
+  @include screen-md{
+    font-size: 16px;
+  } 
+}
+
+@mixin p-default {
+  font-size: 1rem;
+}
+@mixin p-bold {
+  font-size: 1rem;
+  font-weight: 700;
+}
+@mixin caption {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300i;
+}

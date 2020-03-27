@@ -1,0 +1,37 @@
+header{
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  .con{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .header-logo{
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    img{
+      width: 100%;
+    }
+  }
+
+  nav{
+    text-transform: capitalize;
+  }
+
+  .nav-pc{
+    .gnb{
+      margin-left: 40px;
+      text-transform: capitalize;
+      @include gnb-default;
+
+      &.active{
+        @include gnb-active;
+      }
+    }
+  }
+
+}
