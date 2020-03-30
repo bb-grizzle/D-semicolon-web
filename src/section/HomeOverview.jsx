@@ -1,11 +1,11 @@
 import React from 'react';
+import {SectionTitle} from 'component';
 
 const HomeOverview = () => {
   return (
     <section className="HomeOverview">
       <div className="con">
-      HomeOverview
-        
+        <SectionTitle title = {'we are'} link = {'/study'} />
       </div>
     </section>
   );
