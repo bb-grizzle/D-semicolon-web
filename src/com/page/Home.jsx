@@ -1,7 +1,7 @@
 import React from 'react';
 
 // section
-import {HomeCover, HomeOverview, HomeMember, HomeContact, Footer,} from 'section';
+import {HomeCover, HomeOverview, HomeMember, HomeContact, Footer,} from 'com/section';
 
 
 const Home = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 // page
-import {Home, Study, Member, Contact, Notfound} from 'page';
+import {Home, Study, Member, Contact, Notfound} from 'com/page';
 
 // component
 import {Header} from 'component';
