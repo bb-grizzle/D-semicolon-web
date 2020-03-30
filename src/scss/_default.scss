@@ -29,3 +29,16 @@ body{
   max-width: 90%;
   margin: 0 auto;
 }
+
+@mixin display-mobile {
+  display: none;
+  @include screen-md{
+    display: block;
+  }
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

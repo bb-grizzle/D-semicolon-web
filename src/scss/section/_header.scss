@@ -10,11 +10,19 @@ header{
   }
 
   .header-logo{
-    width: 60px;
-    height: 60px;
+    width: $size-header-pc;
+    height: $size-header-pc;
     display: inline-block;
-    img{
+    position: relative;
+    .logo{
       width: 100%;
+    }
+    .logo-w{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      opacity: 0;
     }
   }
 
@@ -32,6 +40,49 @@ header{
         @include gnb-active;
       }
     }
+  }
+
+  .media-pc{
+    @include screen-md{
+      display: none;
+    }
+  }
+
+  .media-mobile{
+    display: none;
+    @include screen-md{
+      display: block;
+    }
+  }
+
+  .ic-menu-w{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transform-origin: center;
+  }
+
+  &.menu{
+    .logo-b{
+      opacity: 0;
+    }
+    .logo-w{
+      opacity: 1;
+    }
+    .con.div::after{
+      background-color: white;
+    }
+    .ic-menu-w{
+      opacity: 1;
+      &.rotate{
+        transform: translate(-50%, -50%) rotate(90deg);
+
+      }
+    }
+  
+    
   }
 
 }

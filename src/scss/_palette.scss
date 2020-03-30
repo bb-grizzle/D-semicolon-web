@@ -127,6 +127,15 @@ img{
   } 
 }
 
+@mixin gnb-menu {
+  font-family: bodoni-book;
+  font-size: 24px;
+  text-transform: capitalize;
+  a{
+    color: $color-white;
+  }
+}
+
 @mixin p-default {
   font-size: 1rem;
 }
@@ -139,3 +148,7 @@ img{
   font-style: italic;
   font-weight: 300i;
 }
+
+// - SIZE -
+$size-header-pc: 60px;
+$size-header-mobile: 60px;
