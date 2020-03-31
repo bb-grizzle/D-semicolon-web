@@ -129,10 +129,12 @@ $color-white: #ffffff;
 
 @mixin p-default {
   font-size: 1rem;
+  line-height: 1.875rem;
 }
 @mixin p-bold {
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.875rem;
 }
 @mixin caption {
   font-size: 1rem;
