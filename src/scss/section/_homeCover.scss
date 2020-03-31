@@ -3,24 +3,24 @@
   .con{
     height: 100%;
     position: relative;
+    @include center-flex;
   }
   .wrap-img{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
+    width: 500px;
+
     >img{
+      transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
 
       &.intro{
-        width: 40%;
+        width: 100%;
+        top: 50%;
+
       }
       &.semicolon{
-        width: 40%;
+        width: 50%;
       }
     }
   }
