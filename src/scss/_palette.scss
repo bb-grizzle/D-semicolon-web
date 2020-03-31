@@ -1,15 +1,8 @@
-// media-query
+// - MEDIA QUERY - 
 $screen-xl-min: 1200px;
 $screen-lg-min: 992px;
 $screen-md-min: 768px;
 $screen-sm-min: 576px;
-
-// color
-$color-main: #000000;
-$color-gray-default: #808080;
-$color-gray-light: #F8F8F8;
-$color-white: #ffffff;
-
 
 @mixin screen-xl {
  // full size screen
@@ -64,17 +57,15 @@ $color-white: #ffffff;
   }
 }
 
-*{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-}
 
-img{
-  vertical-align: top;
-}
+// - COLOR - 
+$color-main: #000000;
+$color-gray-default: #808080;
+$color-gray-light: #F8F8F8;
+$color-white: #ffffff;
 
+
+// - FONT - 
 @font-face{
   font-family: bodoni-bold;
   src: url(../font/BodoniStd-Bold.otf);
@@ -152,3 +143,6 @@ img{
 // - SIZE -
 $size-header-pc: 60px;
 $size-header-mobile: 60px;
+
+// - TRANSITION - 
+$transition-default: all .3s ease-in-out;

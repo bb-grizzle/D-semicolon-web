@@ -7,6 +7,9 @@ header{
     justify-content: space-between;
     align-items: center;
     position: relative;
+    &.div:after{
+      transition: $transition-default; 
+    }
   }
 
   .header-logo{
@@ -18,6 +21,8 @@ header{
       width: 100%;
     }
     .logo-w{
+      transition: $transition-default;
+      transition-delay: .5s;
       position: absolute;
       left: 0;
       top: 0;
@@ -62,6 +67,11 @@ header{
     transform: translate(-50%, -50%);
     opacity: 0;
     transform-origin: center;
+    &.rotate{
+      transition: $transition-default;
+      transition-property: transform;
+      transition-delay: 5s;
+    }
   }
 
   &.menu{
@@ -78,7 +88,6 @@ header{
       opacity: 1;
       &.rotate{
         transform: translate(-50%, -50%) rotate(90deg);
-
       }
     }
   

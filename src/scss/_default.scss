@@ -1,3 +1,15 @@
+// - DEFAULT - 
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+img{
+  vertical-align: top;
+}
+
 @mixin border-test-b {
   border: 2px solid black;
 }
@@ -6,12 +18,13 @@
 }
 
 
-// font family
+// - FONT - 
 body{
   font-family: 'Source Sans Pro', sans-serif;
   background-color: $color-gray-light;
 }
 
+// - ITEM - 
 .div::after{
   content: '';
   display: block;
@@ -24,6 +37,7 @@ body{
   background-color: $color-main;
 }
 
+// - LAYOUT - 
 .con{
   width: 1200px;
   max-width: 90%;

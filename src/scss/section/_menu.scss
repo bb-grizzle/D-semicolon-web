@@ -1,11 +1,12 @@
 .Menu{
+  @include display-mobile;
   background-color: $color-main;
   width: 100%;
   height: 100vh;
-  @include display-mobile;
   position: fixed;
   z-index: 90;
   padding-top: calc(#{$size-header-mobile} + 56px);
+  transition: $transition-default;
   &.default{
     transform: translateX(100%);
   }
