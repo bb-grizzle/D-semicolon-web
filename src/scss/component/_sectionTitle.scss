@@ -1,0 +1,14 @@
+.SectionTitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+
+  .title{
+    @include h1;
+  }
+  .more{
+    font-family: bodoni-book;
+    font-size: 1.5rem;
+  }
+}

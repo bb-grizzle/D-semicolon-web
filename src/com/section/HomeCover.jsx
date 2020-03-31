@@ -45,7 +45,6 @@ const HomeCover = () => {
   const [semi, setSemi] = useState(0);
 
   useEffect(() => {
-
     const makeRandomImage = () => {
       const rand = Math.floor(Math.random() * intro_arr.length);
       setIntroImage(rand)
