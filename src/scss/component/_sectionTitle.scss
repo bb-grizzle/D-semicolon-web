@@ -1,15 +1,17 @@
-.SectionTitle{
+.SectionTitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
   padding-top: 100px;
 
-  .title{
+  .title {
     @include h1;
   }
-  .more{
+
+  .more {
     font-family: bodoni-book;
     font-size: 1.5rem;
+    color: black;
   }
 }

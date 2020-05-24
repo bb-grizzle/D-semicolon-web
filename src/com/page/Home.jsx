@@ -1,8 +1,13 @@
-import React from 'react';
+import React from "react";
 
 // section
-import {HomeCover, HomeOverview, HomeMember, HomeContact, Footer,} from 'com/section';
-
+import {
+  HomeCover,
+  HomeOverview,
+  HomeMember,
+  HomeContact,
+  Footer
+} from "com/section";
 
 const Home = () => {
   return (
@@ -14,6 +19,6 @@ const Home = () => {
       <Footer />
     </div>
   );
-}
+};
 
 export default Home;

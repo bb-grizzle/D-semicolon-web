@@ -1,11 +1,13 @@
-import React from 'react';
-
+import React from "react";
+import { SectionTitle } from "com/component";
 const HomeContact = () => {
   return (
     <div className="HomeContact">
-      HomeContact
+      <div className="con">
+        <SectionTitle title="Contact -" link="/contact" />
+      </div>
     </div>
   );
-}
+};
 
 export default HomeContact;

@@ -1,21 +1,29 @@
-.HomeMember{
-  $gap: 16px;
-  // $grid: calc((100% - 16px*11) /12);
-  $grid: 100%;
-  .wrap-nth{
+.HomeMember {
+
+  .wrap-members {
     margin-top: 50px;
     display: flex;
+    overflow: scroll;
 
-    .title-nth{
+    .wrap-nth {
+      flex-shrink: 0;
+      width: 100%;
+
+    }
+
+    .title-nth {
       @include h2;
       position: relative;
     }
   }
-  .wrap-member{
+
+  .wrap-member {
     position: relative;
-    >p{
-      @include border-test-r;
-      width: $grid;
+    display: flex;
+
+    .wrap-col {
+      flex-shrink: 0;
     }
+
   }
 }
