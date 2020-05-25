@@ -1,9 +1,15 @@
 .HomeMember {
 
   .wrap-members {
+    @include hideScroll;
     margin-top: 50px;
     display: flex;
     overflow: scroll;
+    scroll-snap-type: x mandatory;
+
+    .ListMember {
+      scroll-snap-align: start;
+    }
 
     .wrap-nth {
       flex-shrink: 0;
@@ -13,17 +19,20 @@
 
     .title-nth {
       @include h2;
-      position: relative;
+      position: sticky;
     }
   }
 
   .wrap-member {
     position: relative;
     display: flex;
+    padding-top: 32px;
 
     .wrap-col {
       flex-shrink: 0;
     }
+
+    .ListMember {}
 
   }
 }

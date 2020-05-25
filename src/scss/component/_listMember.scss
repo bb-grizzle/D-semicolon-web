@@ -1,5 +1,8 @@
 .ListMember {
   margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+
 
   .wrap-name {
     @include h3;
@@ -9,6 +12,7 @@
     text-transform: uppercase;
     justify-content: flex-start;
     position: relative;
+    align-self: flex-start;
 
     p {
       flex-grow: 0;
@@ -25,7 +29,7 @@
       bottom: 5px;
       right: 0;
       height: 2px;
-      // background-color: $color-main;
+      background-color: $color-main;
     }
 
   }
@@ -46,6 +50,7 @@
       a {
         color: $color-main;
       }
+
     }
   }
 }

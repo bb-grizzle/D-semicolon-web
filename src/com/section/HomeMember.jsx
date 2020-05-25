@@ -334,7 +334,7 @@ const HomeMember = () => {
               key={`year-${index}`}
               style={{
                 width: `${colWidth * Math.ceil(el.member.length / 2)}px`,
-                marginRight: `${colWidth / 2}px`
+                paddingRight: `${colWidth}px`
               }}
             >
               <h2 className="title-nth div">{makeCount(el.count)}</h2>
