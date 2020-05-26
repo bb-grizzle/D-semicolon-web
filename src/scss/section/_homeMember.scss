@@ -2,7 +2,6 @@
 
   .wrap-members {
     @include hideScroll;
-    margin-top: 50px;
     display: flex;
     overflow: scroll;
     scroll-snap-type: x mandatory;

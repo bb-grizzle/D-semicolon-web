@@ -1,15 +1,16 @@
-.HomeOverview{
+.HomeOverview {
 
-  .wrap-text{
-    margin-top: 20px;
+  .wrap-text {
+    // margin-top: 20px;
     @include p-default;
     color: $color-gray-default;
-    .text{
+
+    .text {
       width: 50%;
     }
   }
 
-  .wrap-img{
+  .wrap-img {
     height: 600px;
     margin-top: 40px;
     overflow: hidden;

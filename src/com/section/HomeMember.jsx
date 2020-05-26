@@ -326,12 +326,11 @@ const HomeMember = () => {
   const renderData = data => {
     return (
       <ul className="wrap-members">
-        {data.map((el, index) => {
+        {data.map(el => {
           return (
             <li
               key={el.id}
               className="wrap-nth"
-              key={`year-${index}`}
               style={{
                 width: `${colWidth * Math.ceil(el.member.length / 2)}px`,
                 paddingRight: `${colWidth}px`

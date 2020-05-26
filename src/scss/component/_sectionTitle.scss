@@ -4,6 +4,11 @@
   align-items: center;
   height: 50px;
   padding-top: 100px;
+  padding-bottom: 50px;
+
+  &.text {
+    padding-bottom: 22px;
+  }
 
   .title {
     @include h1;
