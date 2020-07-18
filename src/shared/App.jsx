@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import { Home, Study, Member, Contact, Notfound } from "com/page";
 
 // component
-import { Header, Menu } from "com/section";
+import { Header, Menu, Footer } from "com/section";
 
 // fn
 import { useWindowSize } from "fn/default";
@@ -45,6 +45,8 @@ function App() {
 					<Route path="/contact" component={Contact} />
 					<Route component={Notfound} />
 				</Switch>
+
+				<Footer />
 			</AppContext.Provider>
 		</div>
 	);

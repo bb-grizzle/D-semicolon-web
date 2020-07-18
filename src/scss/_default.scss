@@ -122,6 +122,7 @@ body {
 
 @mixin paddingDefualt {
   padding-top: $size-header-pc + 100px;
+  min-height: 100vh;
 
   @include screen-md {
     padding-top: $size-header-mobile;

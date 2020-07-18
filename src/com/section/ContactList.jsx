@@ -6,7 +6,7 @@ const ContactList = ({ data }) => {
 	return (
 		<div className="ContactList ListWrapperDefault">
 			<div className={`con ListDividerWrapper`}>
-				<SectionDevider title={"contact"} />
+				<SectionDevider title={"Contact"} />
 			</div>
 			<div className="con">
 				<ul className="list">

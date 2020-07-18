@@ -21,10 +21,10 @@
     &.down {
       top: $size-header-mobile;
 
-      &::after {
-        left: 50%;
-        width: 0%;
-      }
+      // &::after {
+      //   left: 50%;
+      //   width: 0%;
+      // }
     }
 
     &::after {

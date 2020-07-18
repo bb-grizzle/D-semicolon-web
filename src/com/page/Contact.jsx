@@ -1,7 +1,6 @@
 import React from "react";
 import { contactMember } from "Data/member.js";
 import ContactList from "../section/ContactList";
-
 const Contact = () => {
 	return (
 		<section className="Contact paddingDefualt">
