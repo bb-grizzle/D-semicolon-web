@@ -16,10 +16,29 @@
     background-color: rgba($color: $color-gray-light, $alpha: 0.7);
     backdrop-filter: blur(12px);
     transition: $transition-default;
+    z-index: $z-subTitle;
 
     &.down {
-      top: $size-header-mobile
+      top: $size-header-mobile;
+
+      &::after {
+        left: 50%;
+        width: 0%;
+      }
     }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0%;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid $color-main;
+      transition: $transition-default;
+    }
+
+
   }
 }
 
@@ -34,6 +53,12 @@
     }
   }
 
+  &:first-child {
+    @include screen-md {
+      margin-top: 50px;
+    }
+  }
+
   .list {
     margin-top: 4px;
     padding-top: 50px;
@@ -42,19 +67,22 @@
     margin-left: 25%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 
     @include screen-md {
       width: 100%;
+      border-top: 0px;
       margin-left: 0;
+      padding-top: 16px;
     }
 
     >.item {
       width: calc(33.3% - #{$size-offset-pc});
       margin-bottom: $size-offset-pc*2;
+      margin-right: $size-offset-pc;
 
       @include screen-md {
         width: 100%;
+        margin-right: 0;
       }
     }
   }

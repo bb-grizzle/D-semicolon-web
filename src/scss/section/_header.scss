@@ -1,5 +1,5 @@
 header {
-  z-index: 100;
+  z-index: $z-header;
   position: fixed;
   width: 100%;
   background-color: rgba($color: #fff, $alpha: 0.7);
@@ -92,6 +92,8 @@ header {
   }
 
   &.menu {
+    background-color: transparent;
+
     .logo-b {
       opacity: 0;
     }

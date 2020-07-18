@@ -1,0 +1,23 @@
+.StudylistDefault {
+  .header {
+    @include h3;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-right: 2rem;
+
+    @include screen-md {
+      padding-right: 0;
+    }
+  }
+
+  .body {
+    @include p-default;
+
+    .text {
+      color: $color-gray-default;
+      font-size: 1rem;
+    }
+  }
+}

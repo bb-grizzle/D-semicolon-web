@@ -41,7 +41,7 @@ export default [{
     memberInit,
     memberInit,
     memberInit,
-    memberInit
+    memberInit, memberInit
   ]
 }, {
   id: 2,

@@ -124,7 +124,7 @@ body {
   padding-top: $size-header-pc + 100px;
 
   @include screen-md {
-    padding-top: $size-header-mobile + 40px;
+    padding-top: $size-header-mobile;
 
   }
 }
