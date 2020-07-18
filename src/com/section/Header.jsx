@@ -23,18 +23,28 @@ const Header = ({ hide }) => {
 				</Link>
 
 				<nav className="nav-pc media-pc">
-					<NavLink activeClassName="active" className="gnb" exact to="/">
-						about
-					</NavLink>
-					<NavLink activeClassName="active" className="gnb" to="/study">
-						study
-					</NavLink>
-					<NavLink activeClassName="active" className="gnb" to="/member">
-						member
-					</NavLink>
-					<NavLink activeClassName="active" className="gnb" to="/contact">
-						contact
-					</NavLink>
+					<ul className="gnb">
+						<li className="gnb">
+							<NavLink activeClassName="active" exact to="/">
+								about
+							</NavLink>
+						</li>
+						<li className="gnb">
+							<NavLink activeClassName="active" to="/study">
+								study
+							</NavLink>
+						</li>
+						<li className="gnb">
+							<NavLink activeClassName="active" to="/member">
+								member
+							</NavLink>
+						</li>
+						<li className="gnb">
+							<NavLink activeClassName="active" to="/contact">
+								contact
+							</NavLink>
+						</li>
+					</ul>
 				</nav>
 
 				<div className={`Btnicon btn-menu media-mobile`} onClick={handleMenuClick}>

@@ -1,0 +1,31 @@
+.ListWrapperDefault {
+  &:not(:first-child) {
+    margin-top: 100px;
+
+  }
+
+  .list {
+    margin-top: 4px;
+    padding-top: 50px;
+    border-top: 1px solid $color-main;
+    width: 75%;
+    margin-left: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @include screen-md {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    >.item {
+      width: calc(33.3% - #{$size-offset-pc});
+      margin-bottom: $size-offset-pc*2;
+
+      @include screen-md {
+        width: 100%;
+      }
+    }
+  }
+}

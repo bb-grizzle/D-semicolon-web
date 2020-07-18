@@ -1,5 +1,5 @@
 import React from "react";
-import { SectionTitle, ListContact } from "com/component";
+import { SectionTitle, MemberDefault } from "com/component";
 import { contactMember } from "Data/member.js";
 
 const HomeContact = () => {
@@ -10,7 +10,7 @@ const HomeContact = () => {
 
 				<ul className="contact">
 					{contactMember.map((el, index) => {
-						return <ListContact key={index} data={el} />;
+						return <MemberDefault key={index} data={el} type={"info"} />;
 					})}
 				</ul>
 			</div>

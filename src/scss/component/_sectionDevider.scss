@@ -1,0 +1,14 @@
+.SectionDevider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.text {
+    padding-bottom: 22px;
+  }
+
+  .title {
+    @include h1;
+  }
+
+}

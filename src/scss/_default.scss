@@ -106,3 +106,29 @@ body {
 
 
 }
+
+@mixin paddingHeader {
+  padding-top: $size-header-pc;
+
+  @include screen-md {
+    padding-top: $size-header-mobile;
+  }
+}
+
+.paddingHeader {
+  @include paddingHeader;
+}
+
+
+@mixin paddingDefualt {
+  padding-top: $size-header-pc + 100px;
+
+  @include screen-md {
+    padding-top: $size-header-mobile + 40px;
+
+  }
+}
+
+.paddingDefualt {
+  @include paddingDefualt;
+}

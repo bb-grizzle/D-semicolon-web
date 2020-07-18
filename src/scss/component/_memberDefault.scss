@@ -1,9 +1,17 @@
-.ListContact {
+.MemberDefault {
   display: flex;
   margin-bottom: 2rem;
-  width: calc(50% - #{$size-offset-pc/2});
   flex-shrink: 0;
   flex-grow: 0;
+
+  &.info {
+    width: calc(50% - #{$size-offset-pc/2});
+  }
+
+  &.contact {
+    width: 100%;
+  }
+
 
   @include screen-md {
     width: 100%;

@@ -3,6 +3,7 @@ import React from "react";
 import { SectionTitle, ListMember } from "com/component";
 // field
 import member from "Data/member.js";
+import { makeCount } from "../../fn/default";
 const data = member[member.length - 1];
 
 const HomeMember = () => {
@@ -29,17 +30,7 @@ const HomeMember = () => {
 			</div>
 		);
 	};
-	const makeCount = (count) => {
-		if (count === 1) {
-			return "1st";
-		} else if (count === 2) {
-			return "2nd";
-		} else if (count === 3) {
-			return "3rd";
-		} else {
-			return `${count}th`;
-		}
-	};
+
 	return (
 		<div className="HomeMember">
 			<div className="con">

@@ -48,11 +48,15 @@ header {
 
   .nav-pc {
     .gnb {
+      display: flex;
+    }
+
+    .gnb li {
       margin-left: 40px;
       text-transform: capitalize;
       @include gnb-default;
 
-      &.active {
+      a.active {
         @include gnb-active;
       }
     }

@@ -18,3 +18,15 @@ export const useWindowSize = () => {
   return size;
 
 }
+
+export const makeCount = (count) => {
+  if (count === 1) {
+    return "1st";
+  } else if (count === 2) {
+    return "2nd";
+  } else if (count === 3) {
+    return "3rd";
+  } else {
+    return `${count}th`;
+  }
+};
