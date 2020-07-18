@@ -12,6 +12,16 @@
     width: 100%;
   }
 
+  &.contact-list {
+    width: calc(50% - #{$size-offset-pc});
+    margin-right: $size-offset-pc;
+
+    @include screen-md {
+      widtH: 100%;
+      margin-right: 0;
+    }
+  }
+
 
   @include screen-md {
     width: 100%;

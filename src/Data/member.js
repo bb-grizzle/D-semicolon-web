@@ -66,4 +66,4 @@ export default [{
 }, ]
 
 
-export const contactMember = [memberInit, memberInit, memberInit]
+export const contactMember = [memberInit, memberInit, memberInit, memberInit, memberInit]
