@@ -1,0 +1,44 @@
+.ListContact {
+  display: flex;
+  margin-bottom: 2rem;
+  width: 50%;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  .avatar {
+    width: $size-contactlist-avatar-pc;
+    height: $size-contactlist-avatar-pc;
+    @include fullBg();
+    border-radius: 999px;
+    background-color: white;
+    border: 1px solid black;
+    margin-right: 24px;
+  }
+
+  .name {
+    @include listUnderline;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: capitalize;
+    position: relative;
+    margin-bottom: 15px;
+  }
+
+  .contact {
+
+    >.item {
+      margin-bottom: 8px;
+      display: flex;
+      font-size: 1rem;
+
+      .key {
+        width: 72px;
+        font-weight: 700;
+      }
+
+      .value {
+        color: $color-gray-default;
+      }
+    }
+  }
+}

@@ -1,18 +1,21 @@
 import React from "react";
 import { SectionTitle, ListContact } from "com/component";
-const HomeContact = () => {
-  return (
-    <div className="HomeContact">
-      <div className="con">
-        <SectionTitle title="Contact -" link="/contact" />
+import { contactMember } from "Data/member.js";
 
-        <ul className="contact">
-          <ListContact />
-          <ListContact />
-        </ul>
-      </div>
-    </div>
-  );
+const HomeContact = () => {
+	return (
+		<div className="HomeContact">
+			<div className="con">
+				<SectionTitle title="Contact -" link="/contact" />
+
+				<ul className="contact">
+					{contactMember.map((el, index) => {
+						return <ListContact key={index} data={el} />;
+					})}
+				</ul>
+			</div>
+		</div>
+	);
 };
 
 export default HomeContact;

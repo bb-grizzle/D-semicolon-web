@@ -30,6 +30,7 @@
 
     .wrap-col {
       flex-shrink: 0;
+      width: calc(100% /4 - #{$size-offset-pc})
     }
 
     .ListMember {}

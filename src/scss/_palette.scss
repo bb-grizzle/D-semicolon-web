@@ -163,8 +163,11 @@ $color-white: #ffffff;
 
 
 // - SIZE -
+$size-offset-pc: 16px;
+$size-offset-mobile: 8px;
 $size-header-pc: 60px;
 $size-header-mobile: 60px;
+$size-contactlist-avatar-pc:72px;
 
 // - TRANSITION - 
 $transition-default: all .3s ease-in-out;

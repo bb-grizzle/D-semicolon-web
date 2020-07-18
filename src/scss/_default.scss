@@ -4,6 +4,8 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
+
+  box-sizing: border-box;
 }
 
 img {
@@ -67,4 +69,23 @@ body {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+@mixin fullBg {
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin listUnderline {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    right: 0;
+    height: 2px;
+    background-color: $color-main;
+  }
+
 }
