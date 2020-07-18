@@ -1,6 +1,5 @@
 .HomeCover {
   height: 100vh;
-  // @include border-test-r;
 
   .con {
     height: 100%;
@@ -11,21 +10,26 @@
   .wrap-img {
     position: relative;
     width: 500px;
+    height: 100%;
 
-    >img {
+    .intro {
+      width: 100%;
+      height: 100%;
+      @include fullBg;
+      background-size: contain;
+      position: absolute;
+      left: 0;
+      top: 0;
+
+    }
+
+    .semicolon {
       transform: translate(-50%, -50%);
       position: absolute;
       left: 50%;
-
-      &.intro {
-        width: 100%;
-        top: 50%;
-
-      }
-
-      &.semicolon {
-        width: 50%;
-      }
+      top: 50%;
+      width: 50%;
     }
+
   }
 }
