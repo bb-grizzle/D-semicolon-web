@@ -1,26 +1,37 @@
-header{
+header {
   z-index: 100;
   position: fixed;
   width: 100%;
-  .con{
+  background-color: rgba($color: #fff, $alpha: 0.7);
+  backdrop-filter: blur(12px);
+  transition: $transition-default;
+
+  &.hide {
+    transform: translateY(-100%);
+  }
+
+  .con {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    &.div:after{
-      transition: $transition-default; 
+
+    &.div:after {
+      transition: $transition-default;
     }
   }
 
-  .header-logo{
+  .header-logo {
     width: $size-header-pc;
     height: $size-header-pc;
     display: inline-block;
     position: relative;
-    .logo{
+
+    .logo {
       width: 100%;
     }
-    .logo-w{
+
+    .logo-w {
       transition: $transition-default;
       transition-delay: .5s;
       position: absolute;
@@ -31,67 +42,73 @@ header{
     }
   }
 
-  nav{
+  nav {
     text-transform: capitalize;
   }
 
-  .nav-pc{
-    .gnb{
+  .nav-pc {
+    .gnb {
       margin-left: 40px;
       text-transform: capitalize;
       @include gnb-default;
 
-      &.active{
+      &.active {
         @include gnb-active;
       }
     }
   }
 
-  .media-pc{
-    @include screen-md{
+  .media-pc {
+    @include screen-md {
       display: none;
     }
   }
 
-  .media-mobile{
+  .media-mobile {
     display: none;
-    @include screen-md{
+
+    @include screen-md {
       display: block;
     }
   }
 
-  .ic-menu-w{
+  .ic-menu-w {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
     transform-origin: center;
-    &.rotate{
+
+    &.rotate {
       transition: $transition-default;
       transition-property: transform;
       transition-delay: 5s;
     }
   }
 
-  &.menu{
-    .logo-b{
+  &.menu {
+    .logo-b {
       opacity: 0;
     }
-    .logo-w{
+
+    .logo-w {
       opacity: 1;
     }
-    .con.div::after{
+
+    .con.div::after {
       background-color: white;
     }
-    .ic-menu-w{
+
+    .ic-menu-w {
       opacity: 1;
-      &.rotate{
+
+      &.rotate {
         transform: translate(-50%, -50%) rotate(90deg);
       }
     }
-  
-    
+
+
   }
 
 }
