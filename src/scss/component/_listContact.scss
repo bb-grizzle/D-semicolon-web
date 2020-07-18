@@ -1,7 +1,7 @@
 .ListContact {
   display: flex;
   margin-bottom: 2rem;
-  width: 50%;
+  width: calc(50% - #{$size-offset-pc/2});
   flex-shrink: 0;
   flex-grow: 0;
 
