@@ -1,9 +1,8 @@
 .HomeMember {
 
   .wrap-members {
-    @include hideScroll;
+
     display: flex;
-    overflow: scroll;
     scroll-snap-type: x mandatory;
 
     .ListMember {
@@ -23,9 +22,11 @@
   }
 
   .wrap-member {
+    @include hideScroll;
     position: relative;
     display: flex;
     padding-top: 32px;
+    overflow-x: scroll;
 
     .wrap-col {
       flex-shrink: 0;
