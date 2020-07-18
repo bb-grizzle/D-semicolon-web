@@ -1,7 +1,37 @@
+.ListGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.ListDividerWrapper {
+
+  @include screen-md {
+    max-width: 100%;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: rgba($color: $color-gray-light, $alpha: 0.7);
+    backdrop-filter: blur(12px);
+    transition: $transition-default;
+
+    &.down {
+      top: $size-header-mobile
+    }
+  }
+}
+
 .ListWrapperDefault {
+  width: 100%;
+
   &:not(:first-child) {
     margin-top: 100px;
 
+    @include screen-md {
+      margin-top: 0;
+    }
   }
 
   .list {

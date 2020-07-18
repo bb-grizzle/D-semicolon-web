@@ -5,9 +5,11 @@ import MemberList from "../section/MemberList";
 const Member = () => {
 	return (
 		<section className="Member paddingDefualt ">
-			{data.map((el, index) => {
-				return <MemberList data={el} key={index} />;
-			})}
+			<div className="ListGroupWrapper">
+				{data.map((el, index) => {
+					return <MemberList data={el} key={index} />;
+				})}
+			</div>
 		</section>
 	);
 };

@@ -33,8 +33,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<AppContext.Provider value={{ screenType, isMenu, setIsMenu }}>
-				{console.log(scrollDir)}
+			<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir }}>
 				<Header hide={scrollDir === "down" ? true : false} />
 				<Menu />
 
