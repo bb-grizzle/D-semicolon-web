@@ -26,6 +26,12 @@ a {
 
 
 // - FONT - 
+html {
+  @include screen-md {
+    font-size: 14px;
+  }
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   background-color: $color-gray-light;
@@ -91,6 +97,12 @@ body {
     right: 0;
     height: 2px;
     background-color: $color-main;
+
+    @include screen-md {
+      bottom: 2px;
+      height: 1px;
+    }
   }
+
 
 }

@@ -5,6 +5,14 @@
   flex-shrink: 0;
   flex-grow: 0;
 
+  @include screen-md {
+    width: 100%;
+  }
+
+  .col:last-child {
+    flex-grow: 1;
+  }
+
   .avatar {
     width: $size-contactlist-avatar-pc;
     height: $size-contactlist-avatar-pc;
@@ -13,15 +21,24 @@
     background-color: white;
     border: 1px solid black;
     margin-right: 24px;
+
+    @include screen-md {
+      width: $size-contactlist-avatar-mobile;
+      height: $size-contactlist-avatar-mobile;
+    }
   }
 
   .name {
     @include listUnderline;
-    font-size: 24px;
+    @include h3;
     font-weight: 700;
     text-transform: capitalize;
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
+
+    @include screen-md {
+      margin-bottom: 12px;
+    }
   }
 
   .contact {
@@ -34,6 +51,10 @@
       .key {
         width: 72px;
         font-weight: 700;
+
+        @include screen-md {
+          width: 48px;
+        }
       }
 
       .value {

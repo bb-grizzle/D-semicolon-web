@@ -1,5 +1,9 @@
 .HomeContact {
   .con>.contact {
     display: flex;
+
+    @include screen-md {
+      flex-direction: column;
+    }
   }
 }

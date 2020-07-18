@@ -12,6 +12,14 @@
     .col {
       width: 50%;
     }
+
+    @include screen-md {
+      justify-content: flex-start;
+
+      .col {
+        width: 100%;
+      }
+    }
   }
 
   .logo {
@@ -23,6 +31,10 @@
       position: relative;
       left: -12px;
       margin-bottom: -8px;
+    }
+
+    @include screen-md {
+      width: 100%;
     }
   }
 

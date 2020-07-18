@@ -1,22 +1,38 @@
 .HomeOverview {
 
   .wrap-text {
-    margin-top: 20px;
     @include p-default;
+    margin-top: 20px;
     color: $color-gray-default;
 
     .text {
       width: 50%;
       line-height: 1.875;
     }
+
+    @include screen-md {
+      margin-top: 16px;
+
+      .text {
+        width: 100%;
+      }
+    }
   }
 
   .wrap-img {
-    height: 600px;
-    margin-top: 40px;
-    overflow: hidden;
-    background-image: url('../../image/home/bg01.png');
-    background-size: cover;
-    background-position: center;
+
+    .con {
+      padding-top: 58%;
+      margin-top: 40px;
+      overflow: hidden;
+      background-image: url('../../image/home/bg01.png');
+      background-size: cover;
+      background-position: center;
+
+      @include screen-md {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
   }
 }

@@ -15,7 +15,10 @@ const HomeOverview = () => {
 						Join us!
 					</p>
 				</div>
-				<div className="wrap-img"></div>
+			</div>
+
+			<div className="wrap-img">
+				<div className="con"></div>
 			</div>
 		</div>
 	);

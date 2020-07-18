@@ -30,10 +30,12 @@
 
     .wrap-col {
       flex-shrink: 0;
-      width: calc(100% /4 - #{$size-offset-pc})
-    }
+      width: calc(100% /4 - #{$size-offset-pc});
 
-    .ListMember {}
+      @include screen-md {
+        width: calc(50% - #{$size-offset-mobile});
+      }
+    }
 
   }
 }
