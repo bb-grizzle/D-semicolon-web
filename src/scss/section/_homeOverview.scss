@@ -1,12 +1,13 @@
 .HomeOverview {
 
   .wrap-text {
-    // margin-top: 20px;
+    margin-top: 20px;
     @include p-default;
     color: $color-gray-default;
 
     .text {
       width: 50%;
+      line-height: 1.875;
     }
   }
 

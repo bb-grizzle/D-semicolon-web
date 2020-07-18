@@ -12,6 +12,10 @@ img {
   vertical-align: top;
 }
 
+a {
+  color: inherit;
+}
+
 @mixin border-test-b {
   border: 2px solid black;
 }

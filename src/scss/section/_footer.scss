@@ -4,4 +4,42 @@
   color: $color-white;
   padding-top: 40px;
   padding-bottom: 64px;
+
+  >.con {
+    display: flex;
+    justify-content: flex-end;
+
+    .col {
+      width: 50%;
+    }
+  }
+
+  .logo {
+    width: 50%;
+    border-bottom: 1px solid white;
+
+    img {
+      width: 60px;
+      position: relative;
+      left: -12px;
+      margin-bottom: -8px;
+    }
+  }
+
+  nav {
+    margin: 32px 0;
+
+    @include gnb-default;
+    color: white;
+    text-transform: capitalize;
+
+    li {
+      margin-bottom: 16px;
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+    color: $color-gray-default;
+  }
 }
