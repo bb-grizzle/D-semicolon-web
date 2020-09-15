@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 
 // page
 import { Home, Study, Member, Contact, Notfound } from "com/page";
@@ -16,10 +16,17 @@ export const AppContext = createContext();
 
 function App() {
 	const [isMenu, setIsMenu] = useState(false);
+	const { listen } = useHistory();
 
 	const scrollDir = useScrollDirection({ initialDirection: 0, thresholdPixels: 0, off: false });
 	const size = useWindowSize();
 	const [screenType, setScreenType] = useState(null);
+
+	useEffect(() => {
+		listen(() => {
+			window.scrollTo(0, 0);
+		});
+	}, [listen]);
 
 	useEffect(() => {
 		if (size[0] <= 992) {

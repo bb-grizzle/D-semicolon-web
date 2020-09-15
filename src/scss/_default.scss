@@ -108,10 +108,10 @@ body {
 }
 
 @mixin paddingHeader {
-  padding-top: $size-header-pc;
+  padding-top: $height-headerLogo-pc;
 
   @include screen-md {
-    padding-top: $size-header-mobile;
+    padding-top: $height-headerLogo-mobile;
   }
 }
 
@@ -121,11 +121,11 @@ body {
 
 
 @mixin paddingDefualt {
-  padding-top: $size-header-pc + 100px;
+  padding-top: $height-headerLogo-pc + 100px;
   min-height: 100vh;
 
   @include screen-md {
-    padding-top: $size-header-mobile;
+    padding-top: $height-headerLogo-mobile;
 
   }
 }

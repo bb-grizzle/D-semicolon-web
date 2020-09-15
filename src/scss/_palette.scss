@@ -116,7 +116,7 @@ $color-white: #ffffff;
 
 @mixin gnb-active {
   font-family: bodoni-book;
-  font-size: 24px;
+  font-size: 20px;
   color: $color-main;
 
   @include screen-md {
@@ -126,7 +126,7 @@ $color-white: #ffffff;
 
 @mixin gnb-default {
   font-family: bodoni-book;
-  font-size: 24px;
+  font-size: 20px;
   color: $color-gray-default;
 
   @include screen-md {
@@ -146,6 +146,7 @@ $color-white: #ffffff;
 
 @mixin p-default {
   font-size: 1rem;
+  font-weight: 400;
   line-height: 1.875rem;
 }
 
@@ -163,10 +164,11 @@ $color-white: #ffffff;
 
 
 // - SIZE -
+$height-header-pc: 80px;
 $size-offset-pc: 16px;
 $size-offset-mobile: 8px;
-$size-header-pc: 60px;
-$size-header-mobile: 60px;
+$height-headerLogo-pc: 60px;
+$height-headerLogo-mobile: 60px;
 $size-contactlist-avatar-pc:72px;
 $size-contactlist-avatar-mobile:48px;
 

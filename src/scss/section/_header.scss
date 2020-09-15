@@ -2,9 +2,11 @@ header {
   z-index: $z-header;
   position: fixed;
   width: 100%;
-  background-color: rgba($color: #fff, $alpha: 0.7);
+  background-color: rgba($color: $color-gray-light, $alpha: 0.7);
   backdrop-filter: blur(12px);
   transition: $transition-default;
+
+  height: $height-header-pc;
 
   &.hide {
     transform: translateY(-100%);
@@ -15,6 +17,7 @@ header {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    height: 100%;
 
     &.div:after {
       transition: $transition-default;
@@ -22,8 +25,8 @@ header {
   }
 
   .header-logo {
-    width: $size-header-pc;
-    height: $size-header-pc;
+    width: $height-headerLogo-pc;
+    height: $height-headerLogo-pc;
     display: inline-block;
     position: relative;
 

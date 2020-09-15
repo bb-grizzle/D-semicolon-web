@@ -1,29 +1,32 @@
-.Menu{
+.Menu {
   @include display-mobile;
   background-color: $color-main;
   width: 100%;
   height: 100vh;
   position: fixed;
   z-index: 90;
-  padding-top: calc(#{$size-header-mobile} + 56px);
+  padding-top: calc(#{$height-headerLogo-mobile} + 56px);
   transition: $transition-default;
-  &.default{
+
+  &.default {
     transform: translateX(100%);
   }
-  &.active{
+
+  &.active {
     transform: translateX(0%);
   }
 
-  .gnb-mobile li{
+  .gnb-mobile li {
     @include gnb-menu;
     margin-bottom: 24px;
-    a{
+
+    a {
       opacity: .5;
     }
 
-    a.active{
+    a.active {
       opacity: 1;
     }
-    
+
   }
 }
