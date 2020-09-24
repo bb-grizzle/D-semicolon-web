@@ -89,6 +89,21 @@ body {
   }
 }
 
+@mixin floatingBtn {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 64px;
+  height: 64px;
+
+  @include screen-md {
+    right: 24px;
+    bottom: 24px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
 
 @mixin display-mobile {
   display: none;

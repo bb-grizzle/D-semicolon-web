@@ -11,7 +11,7 @@ import { Header, Menu, Footer } from "com/section";
 // fn
 import { useWindowSize } from "fn/default";
 import { useScrollDirection } from "../Hooks";
-import { fullHeight } from "../fn/default";
+import { fullHeight, preventScroll, activeScroll } from "../fn/default";
 import AdminProvider from "../com/context/AdminProvider";
 
 // context
@@ -43,6 +43,14 @@ function App() {
 			setScreenType(null);
 		}
 	}, [size]);
+
+	useEffect(() => {
+		if (isMenu) {
+			preventScroll();
+		} else {
+			activeScroll();
+		}
+	}, [isMenu]);
 
 	return (
 		<div className="App">

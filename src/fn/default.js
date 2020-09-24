@@ -38,3 +38,15 @@ export const fullHeight = () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
 }
+
+export const preventScroll = () => {
+  document.body.style.height = "100vh";
+  document.body.style.overflow = "hidden";
+
+}
+
+
+export const activeScroll = () => {
+  document.body.style.height = "initial";
+  document.body.style.overflow = "auto";
+}

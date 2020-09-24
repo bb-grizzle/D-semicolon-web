@@ -29,4 +29,10 @@
     }
 
   }
+
+  .btn-logout {
+    @include gnb-menu;
+    color: white;
+    opacity: 0.5;
+  }
 }
