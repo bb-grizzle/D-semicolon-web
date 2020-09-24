@@ -47,6 +47,14 @@ header {
 
   nav {
     text-transform: capitalize;
+    display: flex;
+  }
+
+  .btn-logout {
+    margin-left: 40px;
+    cursor: pointer;
+
+    @include gnb-default;
   }
 
   .nav-pc {

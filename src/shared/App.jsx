@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 
 // page
 import { Home, Study, Member, Contact, Notfound } from "com/page";
+import Admin from "com/page/admin";
 
 // component
 import { Header, Menu, Footer } from "com/section";
@@ -10,6 +11,8 @@ import { Header, Menu, Footer } from "com/section";
 // fn
 import { useWindowSize } from "fn/default";
 import { useScrollDirection } from "../Hooks";
+import { fullHeight } from "../fn/default";
+import AdminProvider from "../com/context/AdminProvider";
 
 // context
 export const AppContext = createContext();
@@ -22,6 +25,9 @@ function App() {
 	const size = useWindowSize();
 	const [screenType, setScreenType] = useState(null);
 
+	useEffect(() => {
+		fullHeight();
+	}, []);
 	useEffect(() => {
 		listen(() => {
 			window.scrollTo(0, 0);
@@ -40,21 +46,25 @@ function App() {
 
 	return (
 		<div className="App">
-			<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir }}>
-				<Header hide={scrollDir === "down" ? true : false} />
-				<Menu />
+			<AdminProvider>
+				<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir }}>
+					<Header hide={scrollDir === "down" ? true : false} />
+					<Menu />
 
-				<Switch>
-					<Route exact path="/" component={Home} />
-					<Route path="/about" component={Home} />
-					<Route path="/study" component={Study} />
-					<Route path="/member" component={Member} />
-					<Route path="/contact" component={Contact} />
-					<Route component={Notfound} />
-				</Switch>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/about" component={Home} />
+						<Route path="/study" component={Study} />
+						<Route path="/member" component={Member} />
+						<Route path="/contact" component={Contact} />
+						<Route path="/_admin" component={Admin} />
 
-				<Footer />
-			</AppContext.Provider>
+						<Route component={Notfound} />
+					</Switch>
+
+					<Footer />
+				</AppContext.Provider>
+			</AdminProvider>
 		</div>
 	);
 }

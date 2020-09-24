@@ -164,10 +164,11 @@ $color-white: #ffffff;
 
 
 // - SIZE -
+$height-full: calc(var(--vh, 1vh) * 100);
 $height-header-pc: 80px;
 $size-offset-pc: 16px;
 $size-offset-mobile: 8px;
-$height-headerLogo-pc: 60px;
+$height-headerLogo-pc: 80px;
 $height-headerLogo-mobile: 60px;
 $size-contactlist-avatar-pc:72px;
 $size-contactlist-avatar-mobile:48px;

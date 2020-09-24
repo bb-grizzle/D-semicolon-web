@@ -57,6 +57,12 @@ body {
   margin: 0 auto;
 }
 
+.con-small {
+  width: 700px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
 @mixin display-mobile {
   display: none;
 

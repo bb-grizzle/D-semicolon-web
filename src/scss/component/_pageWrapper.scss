@@ -1,0 +1,4 @@
+.pageWrapper {
+	min-height: $height-full;
+	@include paddingHeader;
+}
