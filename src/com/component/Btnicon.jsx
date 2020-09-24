@@ -1,14 +1,17 @@
 import React from "react";
 
-const Btnicon = (props) => {
+const Btnicon = ({ className, onClick, href, download, img }) => {
+	const renderIcon = () => {
+		return img.split("/").length === 1 ? <p>{img}</p> : <img src={img} alt={className} />;
+	};
 	return (
-		<div className={`Btnicon ${props.className}`} onClick={props.onClick}>
-			{props.href ? (
-				<a href={props.href} download={props.download}>
-					<img src={props.img} alt={props.className} />
+		<div className={`Btnicon ${className}`} onClick={onClick}>
+			{href ? (
+				<a href={href} download={download}>
+					{renderIcon()}
 				</a>
 			) : (
-				<img src={props.img} alt={props.className} />
+				renderIcon()
 			)}
 		</div>
 	);

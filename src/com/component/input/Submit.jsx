@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 const Submit = ({ value }) => {
 	return (
-		<div>
+		<div className="Submit">
 			<input type="submit" value={value} />
 		</div>
 	);

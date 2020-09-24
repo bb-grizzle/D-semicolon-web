@@ -1,0 +1,15 @@
+.Submit {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+
+  input[type="submit"] {
+    @include inputStyle;
+    width: 100%;
+    background-color: inherit;
+    color: inherit;
+    outline: none;
+    border-radius: none;
+
+  }
+}

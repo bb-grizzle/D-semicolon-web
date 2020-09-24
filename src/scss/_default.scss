@@ -12,6 +12,17 @@ img {
   vertical-align: top;
 }
 
+input {
+  border: 0;
+  outline: none;
+}
+
+input,
+select {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
 a {
   color: inherit;
 }
@@ -55,13 +66,29 @@ body {
   width: 1200px;
   max-width: 90%;
   margin: 0 auto;
+
 }
 
 .con-small {
   width: 700px;
   max-width: 90%;
   margin: 0 auto;
+
+
+
+  &.x2 {
+    width: 500px;
+
+    @include screen-md {
+      width: 90%;
+    }
+  }
+
+  @include screen-md {
+    width: 90%;
+  }
 }
+
 
 @mixin display-mobile {
   display: none;
@@ -116,9 +143,11 @@ body {
 @mixin paddingHeader {
   padding-top: $height-headerLogo-pc;
 
+
   @include screen-md {
     padding-top: $height-headerLogo-mobile;
   }
+
 }
 
 .paddingHeader {
@@ -138,4 +167,15 @@ body {
 
 .paddingDefualt {
   @include paddingDefualt;
+}
+
+
+// transition
+@mixin transition-default {
+  transition: all .3s ease-in-out;
+}
+
+@mixin inputStyle {
+  padding: 10px 6px;
+  font-size: 16px;
 }

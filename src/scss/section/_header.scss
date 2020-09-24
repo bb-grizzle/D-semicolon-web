@@ -43,6 +43,11 @@ header {
       width: 100%;
       opacity: 0;
     }
+
+    @include screen-md {
+      width: $height-headerLogo-mobile;
+      height: $height-headerLogo-mobile;
+    }
   }
 
   nav {

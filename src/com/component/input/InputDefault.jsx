@@ -1,10 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-const InputDefault = ({ value, onChange, label, placeholder, type }) => {
+import Btnicon from "../Btnicon";
+const InputDefault = ({ value, onChange, label, placeholder, type, onClick }) => {
 	return (
-		<div>
-			<label>{label}</label>
-			<input value={value} onChange={onChange} type={type ? type : "text"} placeholder={placeholder} />
+		<div className="InputDefault">
+			<div className="row">
+				<label className="label">{label}</label>
+			</div>
+			<div className="row">
+				<div className="text-wrapper">
+					<input value={value} onChange={onChange} type={type ? type : "text"} placeholder={placeholder} />
+					{onClick && <Btnicon img="add" onClick={onClick} />}
+				</div>
+			</div>
 		</div>
 	);
 };
