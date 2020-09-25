@@ -19,4 +19,8 @@
     font-size: 1.5rem;
     color: black;
   }
+
+  @include screen-md {
+    padding-top: 50px;
+  }
 }

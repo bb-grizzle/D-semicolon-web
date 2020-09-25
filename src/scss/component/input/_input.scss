@@ -1,10 +1,4 @@
 .InputDefault {
-  margin-bottom: 16px;
-
-  &:nth-last-child(2) {
-    margin-bottom: 40px;
-  }
-
 
   .row {
     display: flex;
@@ -90,6 +84,21 @@
           width: 100%;
         }
       }
+    }
+  }
+
+  &.InputDropdown {
+    .dropdown-wrapper {
+      width: 100%;
+      display: flex;
+      background-color: white;
+      align-items: center;
+
+      .dropdown {
+        @include inputStyle;
+        width: 100%;
+      }
+
     }
   }
 }

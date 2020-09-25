@@ -1,13 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-const ListAdmin = ({ title, contents }) => {
+import { useSetNowAction } from "../../context/AdminProvider";
+const ListAdmin = ({ id, title, contents, onDeleteClick, onClick }) => {
+	const setNowAction = useSetNowAction();
+
+	const handleListClick = () => {
+		setNowAction("EDIT");
+		onClick(id);
+	};
 	return (
-		<li className="ListAdmin">
-			<h3 className="listTitle">{title}</h3>
+		<li className="ListAdmin" onClick={handleListClick}>
+			<div className="wrap-title">
+				<h3 className="title">{title}</h3>
+				<div className="btn-edit" onClick={(e) => onDeleteClick(e, id)}>
+					<p>DELETE</p>
+				</div>
+			</div>
 			<ul className="contents-wrapper">
 				{contents.map((el) => {
 					return (
-						<li key={el.keyValue}>
+						<li key={el.keyValue} className="contents">
 							<p className="key">{el.keyValue}</p>
 							<p className="value">{el.value}</p>
 						</li>
@@ -19,13 +31,16 @@ const ListAdmin = ({ title, contents }) => {
 };
 
 ListAdmin.propTypes = {
+	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
 	contents: PropTypes.arrayOf(
 		PropTypes.shape({
 			keyValue: PropTypes.shape,
 			value: PropTypes.shape
 		})
-	).isRequired
+	).isRequired,
+	onDeleteClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired
 };
 
 export default ListAdmin;

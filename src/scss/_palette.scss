@@ -175,8 +175,11 @@ $size-contactlist-avatar-mobile:48px;
 
 // - TRANSITION - 
 $transition-default: all .3s ease-in-out;
+$transition-list: all .1s ease-in-out;
 
 // - ZINDEX
 $z-header: 100;
 $z-menu: 200;
 $z-subTitle: 10;
+$z-form: 120;
+$z-floatingBtn: 60;

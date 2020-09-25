@@ -40,8 +40,6 @@ const Menu = () => {
 		<div className={`Menu ${isMenu ? "active" : "default"}`}>
 			<div className="con">
 				<ul className="gnb-mobile">
-					{console.log(menu)}
-
 					{menu.map((el) => {
 						return (
 							<li key={el.name}>
@@ -51,26 +49,6 @@ const Menu = () => {
 							</li>
 						);
 					})}
-					{/* <li>
-						<NavLink exact to="/" activeClassName="active" onClick={handleNavClick}>
-							about
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/study" activeClassName="active" onClick={handleNavClick}>
-							study
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/member" activeClassName="active" onClick={handleNavClick}>
-							members
-						</NavLink>
-					</li>
-					<li>
-						<NavLink to="/contact" activeClassName="active" onClick={handleNavClick}>
-							contact
-						</NavLink>
-					</li> */}
 
 					{isAdmin && islogin && (
 						<p onClick={handleLogoutClick} className="btn-logout">

@@ -23,10 +23,10 @@ export const fbAuthListener = (cal) => {
 export const fbSignout = () => {
 	auth
 		.signOut()
-		.then(function() {
+		.then(function () {
 			// Sign-out successful.
 		})
-		.catch(function(error) {
+		.catch(function (error) {
 			// An error happened.
 			console.log(error);
 		});
@@ -167,11 +167,13 @@ export const fbUploadStorage = async (path, name, file) => {
 		const storageRef = storage.ref();
 		const ref = await storageRef.child(`${path}/${name}`);
 		await ref.put(file);
-		const fileUrl = await ref.getDownloadURL();
-		const prevFile = `${path}/${name}`;
+		const url = await ref.getDownloadURL();
+		const prevUrl = `${path}/${name}`;
+		const fileName = file.name
 		return {
-			fileUrl,
-			prevFile
+			url,
+			prevUrl,
+			fileName
 		};
 	} catch (err) {
 		console.log(err);
@@ -191,7 +193,7 @@ export const fbDeleteStorage = async (path) => {
 
 export const fbUpdateStorage = async (prevpath, uploadpath, filename, file) => {
 	try {
-		fbDeleteStorage(prevpath);
+		await fbDeleteStorage(prevpath);
 		const result = await fbUploadStorage(uploadpath, filename, file);
 		return result;
 	} catch (err) {

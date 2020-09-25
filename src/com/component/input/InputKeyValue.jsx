@@ -4,7 +4,7 @@ import Btnicon from "../Btnicon";
 
 const InputKeyValue = ({ label, inputKey, value, onKeyChange, onValueChange, onClick, placeholder, keys }) => {
 	return (
-		<div className="InputDefault InputKeyValue">
+		<div className="InputDefault InputKeyValue inputItem">
 			<div className="row">
 				<label className="label">{label}</label>
 			</div>

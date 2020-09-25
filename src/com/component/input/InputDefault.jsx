@@ -2,14 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import Btnicon from "../Btnicon";
 const InputDefault = ({ value, onChange, label, placeholder, type, onClick }) => {
+	const handleKeyDown = (e) => {
+		if (!onClick) return;
+		if (e.key === "Enter") {
+			e.preventDefault();
+			onClick();
+		}
+	};
 	return (
-		<div className="InputDefault">
+		<div className="InputDefault inputItem">
 			<div className="row">
 				<label className="label">{label}</label>
 			</div>
 			<div className="row">
 				<div className="text-wrapper">
-					<input value={value} onChange={onChange} type={type ? type : "text"} placeholder={placeholder} />
+					<input value={value} onChange={onChange} type={type ? type : "text"} placeholder={placeholder} onKeyPress={handleKeyDown} />
 					{onClick && <Btnicon img="add" onClick={onClick} />}
 				</div>
 			</div>

@@ -3,10 +3,14 @@ header {
   position: fixed;
   width: 100%;
   background-color: rgba($color: $color-gray-light, $alpha: 0.7);
-  backdrop-filter: blur(12px);
   transition: $transition-default;
 
   height: $height-header-pc;
+  backdrop-filter: blur(12px);
+
+  &.isAddClick {
+    backdrop-filter: initial;
+  }
 
   &.hide {
     transform: translateY(-100%);

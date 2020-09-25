@@ -1,0 +1,12 @@
+.FormTag {
+  @include inputStyle;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin-bottom: 0;
+
+  .btn-delete {
+    cursor: pointer;
+  }
+
+}

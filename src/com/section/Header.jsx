@@ -7,7 +7,7 @@ import ic_menu_b from "image/icon/ic-menu-b.svg";
 import ic_menu_w from "image/icon/ic-menu-w.svg";
 import logo_b from "image/logo/D_logo_b.svg";
 import logo_w from "image/logo/D_logo_w.svg";
-import { IsUserLogin } from "../context/AdminProvider";
+import { IsUserLogin, useNowAction } from "../context/AdminProvider";
 import { fbSignout } from "../../Firebase/firebase";
 import { MENU_DEFAULT, MENU_ADMIN } from "../../Data/menu";
 
@@ -17,7 +17,7 @@ const Header = ({ hide }) => {
 	const location = useLocation();
 	const [isAdmin, setIsAdmin] = useState(false);
 	const islogin = IsUserLogin();
-
+	const nowAction = useNowAction();
 	const handleMenuClick = () => {
 		setIsMenu(!isMenu);
 	};
@@ -43,7 +43,7 @@ const Header = ({ hide }) => {
 	};
 
 	return (
-		<header className={`type-default ${isMenu ? "menu" : ""} ${hide ? "hide" : ""}`}>
+		<header className={`type-default ${isMenu ? "menu" : ""} ${hide ? "hide" : ""} ${nowAction !== null ? "isAddClick" : ""}`}>
 			<div className="con div">
 				<Link to="/" className="header-logo">
 					<img className="logo logo-b" src={logo_b} alt="logo black" />

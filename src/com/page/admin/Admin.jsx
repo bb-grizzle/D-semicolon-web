@@ -10,15 +10,14 @@ const Admin = () => {
 		location: { pathname }
 	} = useHistory();
 	const islogin = IsUserLogin();
+
 	useEffect(() => {
-		console.log(pathname);
 		if (pathname === "/_admin" || pathname === "/_admin/") {
 			push("/_admin/study");
 		}
 	}, [pathname, push]);
 
 	useEffect(() => {
-		console.log(islogin);
 		if (!islogin) {
 			push("/_admin");
 		}

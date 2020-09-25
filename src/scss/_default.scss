@@ -12,15 +12,13 @@ img {
   vertical-align: top;
 }
 
-input {
-  border: 0;
-  outline: none;
-}
-
 input,
-select {
+select,
+option {
   -webkit-appearance: none;
   -webkit-border-radius: 0;
+  outline: none;
+  border: 0;
 }
 
 a {
@@ -160,7 +158,7 @@ body {
 
 
   @include screen-md {
-    padding-top: $height-headerLogo-mobile;
+    padding-top: $height-headerLogo-pc;
   }
 
 }
@@ -190,7 +188,17 @@ body {
   transition: all .3s ease-in-out;
 }
 
+$transition-default : all .3s ease-in-out;
+
 @mixin inputStyle {
-  padding: 10px 6px;
+  padding: 10px 12px;
   font-size: 16px;
+}
+
+.inputItem {
+  margin-bottom: 16px;
+
+  &:nth-last-child(2) {
+    margin-bottom: 40px;
+  }
 }
