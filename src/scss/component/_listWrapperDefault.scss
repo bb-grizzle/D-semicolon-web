@@ -1,4 +1,6 @@
 .ListGroupWrapper {
+
+
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -17,14 +19,10 @@
     backdrop-filter: blur(12px);
     transition: $transition-default;
     z-index: $z-subTitle;
+    text-transform: uppercase;
 
     &.down {
-      top: $height-headerLogo-mobile;
-
-      // &::after {
-      //   left: 50%;
-      //   width: 0%;
-      // }
+      top: $height-headerLogo-pc;
     }
 
     &::after {
