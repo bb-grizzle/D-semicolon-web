@@ -7,7 +7,7 @@ const Btnicon = ({ className, onClick, href, download, img }) => {
 	return (
 		<div className={`Btnicon ${className}`} onClick={onClick}>
 			{href ? (
-				<a href={href} download={download}>
+				<a href={href} download={download} target="_blank" rel="noopener noreferrer">
 					{renderIcon()}
 				</a>
 			) : (

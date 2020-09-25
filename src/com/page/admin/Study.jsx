@@ -5,63 +5,23 @@ import AdminForm from "../../component/admin/AdminForm";
 import AdminFLoatingBtn from "../../component/admin/AdminFLoatingBtn";
 import useInput from "../../../Hooks/useInput";
 import useFileInput from "../../../Hooks/useFileInput";
-import { fbUploadStorage, fbUploadData, fbUpdateData, fbGetData, fbDeleteStorage, fbDeleteData, fbUpdateStorage, fbGetDataById } from "../../../Firebase/firebase";
+import { fbUploadStorage, fbUploadData, fbUpdateData, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import useDropdownInput from "../../../Hooks/useDropdownInput";
 import SubTitle from "../../component/SubTitle";
+import { BASIC_CATEGORY, useStudy } from "../../../Data/study";
 const COL = "study";
-const BASIC_CATEGORY = ["html", "css", "js"];
 
 const Study = () => {
-	const [data, setData] = useState();
-	const [filteredData, setFilteredData] = useState();
+	const { data, setData, options, setOptions } = useStudy();
 	const titleInput = useInput("");
 	const fileInput = useFileInput();
 	const contentsInput = useInput("");
-	const [options, setOptions] = useState();
 	const categoryInput = useDropdownInput(options);
 	const [contentsArr, setContentsArr] = useState([]);
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
 	const [nowData, setNowData] = useState();
-
-	useEffect(() => {
-		const getData = async () => {
-			try {
-				const data = await fbGetData(COL, "timeStamp", "desc");
-				setData(data);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		getData();
-	}, []);
-
-	useEffect(() => {
-		const getOptions = async () => {
-			try {
-				const res = await fbGetDataById(COL, "init");
-				setOptions(res.option);
-			} catch (err) {
-				console.log(err);
-			}
-		};
-		getOptions();
-	}, []);
-
-	useEffect(() => {
-		if (data && options) {
-			let filtered = {};
-			data.forEach((el) => {
-				filtered = {
-					...filtered,
-					[el.category]: filtered[el.category] ? [...filtered[el.category], el] : [el]
-				};
-			});
-
-			setFilteredData(filtered);
-		}
-	}, [data, options]);
 
 	useEffect(() => {
 		if (options) {
@@ -104,24 +64,23 @@ const Study = () => {
 				};
 				// 데이터 업데이트
 				await fbUpdateData(COL, id, newData);
-				setData((n) => [{ ...newData, id }, ...n]);
+				setData((n) => ({ ...n, [newData.category]: [{ ...newData, id }, ...n[newData.category]] }));
 				alert("성공적으로 업로드 했어요 😆");
 			} else if (nowAction === "EDIT") {
-				console.log(fileInput);
 				if (!fileInput.value.file) {
-					console.log("file no");
 					await fbUpdateData(COL, nowData.id, uploadData);
 
-					setData((n) => {
-						return n.map((el) =>
+					setData((n) => ({
+						...n,
+						[nowData.category]: n[nowData.category].map((el) =>
 							el.id === nowData.id
 								? {
 										...el,
 										...uploadData
 								  }
 								: el
-						);
-					});
+						)
+					}));
 				} else {
 					const file = await fbUpdateStorage(nowData.file.prevUrl, `${COL}`, nowData.id, fileInput.value.file);
 
@@ -129,7 +88,10 @@ const Study = () => {
 						...uploadData,
 						file
 					});
-					setData((n) => n.map((el) => (el.id === nowData.id ? { ...el, ...uploadData, file } : el)));
+					setData((n) => ({
+						...n,
+						[nowData.category]: n[nowData.category].map((el) => (el.id === nowData.id ? { ...el, ...uploadData, file } : el))
+					}));
 				}
 				alert("성공적으로 수정 했어요 😆");
 			}
@@ -163,21 +125,18 @@ const Study = () => {
 			console.log(err);
 		}
 	};
-	const handleListClick = (id) => {
-		data.forEach((el) => {
-			if (id === el.id) {
-				setNowData(el);
-				titleInput.setValue(el.title);
-				fileInput.setValue((n) => ({
-					...n,
-					fileName: el.file.fileName,
-					url: el.file.url,
-					prevUrl: el.file.prevUrl
-				}));
-				categoryInput.setValue(el.category);
-				setContentsArr(el.contents);
-			}
-		});
+	const handleListClick = (data) => {
+		setNowData(data);
+
+		titleInput.setValue(data.title);
+		fileInput.setValue((n) => ({
+			...n,
+			fileName: data.file.fileName,
+			url: data.file.url,
+			prevUrl: data.file.prevUrl
+		}));
+		categoryInput.setValue(data.category);
+		setContentsArr(data.contents);
 	};
 
 	const initForm = () => {
@@ -207,13 +166,22 @@ const Study = () => {
 
 			{BASIC_CATEGORY.map((el) => {
 				return (
-					filteredData &&
-					filteredData[el] && (
+					data &&
+					data[el] && (
 						<div className="filter-wrapper" key={el}>
 							<SubTitle title={el} />
 							<ul className="ListAdmin-wrapper">
-								{filteredData[el].map((el) => {
-									return <ListAdmin id={el.id} onClick={handleListClick} onDeleteClick={handleDeleteClick} key={el.id} title={el.title} contents={[{ keyValue: "category", value: el.category }]} />;
+								{data[el].map((el) => {
+									return (
+										<ListAdmin
+											id={el.id}
+											onClick={() => handleListClick(el)}
+											onDeleteClick={handleDeleteClick}
+											key={el.id}
+											title={el.title}
+											contents={[{ keyValue: "category", value: el.category }]}
+										/>
+									);
 								})}
 							</ul>
 						</div>
@@ -221,14 +189,14 @@ const Study = () => {
 				);
 			})}
 
-			{filteredData &&
-				Object.keys(filteredData).map((key) => {
+			{data &&
+				Object.keys(data).map((key) => {
 					if (BASIC_CATEGORY.includes(key)) return null;
 					return (
 						<div className="filter-wrapper" key={key}>
 							<SubTitle title={key} />
 							<ul className="ListAdmin-wrapper">
-								{filteredData[key].map((el) => {
+								{data[key].map((el) => {
 									return <ListAdmin id={el.id} onClick={handleListClick} onDeleteClick={handleDeleteClick} key={el.id} title={el.title} contents={[{ keyValue: "category", value: el.category }]} />;
 								})}
 							</ul>

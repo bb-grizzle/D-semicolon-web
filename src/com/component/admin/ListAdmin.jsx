@@ -6,7 +6,7 @@ const ListAdmin = ({ id, title, contents, onDeleteClick, onClick }) => {
 
 	const handleListClick = () => {
 		setNowAction("EDIT");
-		onClick(id);
+		onClick();
 	};
 	return (
 		<li className="ListAdmin" onClick={handleListClick}>

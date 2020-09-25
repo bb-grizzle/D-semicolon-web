@@ -7,11 +7,11 @@ const StudylistDefault = ({ className, data }) => {
 		<li className={`StudylistDefault ${className}`}>
 			<div className="row header">
 				<p className="title">{data.title}</p>
-				<Btnicon img={ic_download} href={data.file} download={true} />
+				<Btnicon img={ic_download} href={data.file.url} download={true} />
 			</div>
 			<div className="row body">
 				<ul>
-					{data.index.map((el, index) => {
+					{data.contents.map((el, index) => {
 						return (
 							<li className="text" key={index}>
 								_ {el}
