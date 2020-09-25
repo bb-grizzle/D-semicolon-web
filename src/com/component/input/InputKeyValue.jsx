@@ -3,6 +3,13 @@ import Propstypes from "prop-types";
 import Btnicon from "../Btnicon";
 
 const InputKeyValue = ({ label, inputKey, value, onKeyChange, onValueChange, onClick, placeholder, keys }) => {
+	const handleKeyPress = (e) => {
+		if (!onClick) return;
+		if (e.key === "Enter") {
+			e.preventDefault();
+			onClick();
+		}
+	};
 	return (
 		<div className="InputDefault InputKeyValue inputItem">
 			<div className="row">
@@ -21,7 +28,7 @@ const InputKeyValue = ({ label, inputKey, value, onKeyChange, onValueChange, onC
 					</select>
 
 					<div className="text-wrapper">
-						<input type="text" className="value" onChange={onValueChange} value={value} placeholder={placeholder} />
+						<input type="text" className="value" onChange={onValueChange} value={value} placeholder={placeholder} onKeyPress={handleKeyPress} />
 						{onClick && <Btnicon img="add" onClick={onClick} />}
 					</div>
 				</div>

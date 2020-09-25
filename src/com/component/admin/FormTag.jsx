@@ -3,8 +3,17 @@ import PropTypes from "prop-types";
 
 const FormTag = ({ text, onClick }) => {
 	return (
-		<div className="FormTag inputItem">
-			<p>{text}</p>
+		<div className="FormTag">
+			<div className="wrapper-contents">
+				{typeof texxt === "string" ? (
+					<p>{text}</p>
+				) : (
+					Object.keys(text).map((key, index) => {
+						return <p key={index}>{text[key]}</p>;
+					})
+				)}
+			</div>
+
 			<p onClick={onClick} className="btn-delete">
 				DELETE
 			</p>
@@ -13,7 +22,7 @@ const FormTag = ({ text, onClick }) => {
 };
 
 FormTag.propTypes = {
-	text: PropTypes.string.isRequired,
+	text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 	onClick: PropTypes.func.isRequired
 };
 

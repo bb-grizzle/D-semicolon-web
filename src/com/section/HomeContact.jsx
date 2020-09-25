@@ -1,6 +1,6 @@
 import React from "react";
 import { SectionTitle, MemberDefault } from "com/component";
-import { contactMember } from "Data/member.js";
+import { contactMember } from "Data/member";
 
 const HomeContact = () => {
 	return (

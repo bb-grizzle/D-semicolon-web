@@ -5,7 +5,7 @@ export const AdminContext = createContext();
 
 const AdminProvider = ({ children }) => {
 	const [isLogin, setIsLogin] = useState(true);
-	const [nowAction, setNowAction] = useState(null);
+	const [nowAction, setNowAction] = useState("ADD");
 
 	useEffect(() => {
 		if (nowAction !== null) {

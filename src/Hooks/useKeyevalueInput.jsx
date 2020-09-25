@@ -10,9 +10,13 @@ const useKeyevalueInput = ({ initialKey, keys }) => {
 	const onValueChange = (e) => {
 		setValue(e.target.value);
 	};
+	const init = () => {
+		setKey(initialKey);
+		setValue("");
+	};
 
 	useEffect(() => {}, [inputKey, value]);
-	return { inputKey, value, onKeyChange, onValueChange, keys };
+	return { inputKey, value, onKeyChange, onValueChange, keys, init };
 };
 
 useKeyevalueInput.proptypes = {

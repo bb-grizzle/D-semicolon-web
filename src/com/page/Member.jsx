@@ -1,5 +1,5 @@
 import React from "react";
-import data from "Data/member.js";
+import data from "Data/member";
 import MemberList from "../section/MemberList";
 
 const Member = () => {

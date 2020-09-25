@@ -42,9 +42,17 @@
       background-color: #fff;
       @include center-flex;
 
+
       &:hover {
-        background-color: black;
-        color: white;
+        opacity: 0.5;
+      }
+
+      &.active {
+        padding-top: 30%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
       }
     }
 

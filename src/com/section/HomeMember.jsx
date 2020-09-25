@@ -2,7 +2,7 @@ import React from "react";
 // component
 import { SectionTitle, ListMember } from "com/component";
 // field
-import member from "Data/member.js";
+import member from "Data/member";
 import { makeCount } from "../../fn/default";
 const data = member[member.length - 1];
 

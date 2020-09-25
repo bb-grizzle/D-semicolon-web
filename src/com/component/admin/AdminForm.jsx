@@ -7,6 +7,7 @@ import InputDefault from "../input/InputDefault";
 import InputFile from "../input/InputFile";
 import FormTag from "./FormTag";
 import InputDropdown from "../input/InputDropdown";
+import InputKeyValue from "../input/InputKeyValue";
 
 const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 	const nowAction = useNowAction();
@@ -30,11 +31,19 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 							case "dropdown":
 								return <InputDropdown {...el} key={index} placeholder={el.label} />;
 							case "text-array":
-								return el.value.map((text, index) => <FormTag key={index} text={text} onClick={() => el.onClick(index)} />);
+								return (
+									<div className="wrapper-formTag inputItem" key={index}>
+										{el.value.map((text, i) => (
+											<FormTag key={i} text={text} onClick={() => el.onClick(index)} />
+										))}
+									</div>
+								);
 							case "file":
-								return <InputFile {...el} key={index} />;
+								return <InputFile {...el} key={index} thumbnail={el.thumbnail} />;
+							case "key-value":
+								return <InputKeyValue {...el} key={index} />;
 							default:
-								return <InputDefault {...el} key={index} placeholder={el.label} />;
+								return <InputDefault {...el} key={index} placeholder={el.label} type={el.inputType} />;
 						}
 					})}
 					<Submit value="추가" />
