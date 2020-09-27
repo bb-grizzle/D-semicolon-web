@@ -7,7 +7,7 @@ import useKeyevalueInput from "../../../Hooks/useKeyevalueInput";
 import useFileInput from "../../../Hooks/useFileInput";
 import { LINK_KEY_INITIAL, MEMBER_INIT, useMember } from "../../../Data/member";
 import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
-import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData } from "../../../Firebase/firebase";
+import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import ListAdmin from "../../component/admin/ListAdmin";
 const COL = "member";
 
@@ -49,16 +49,34 @@ const Member = () => {
 			return;
 		}
 
-		// UPLOAD
-		if (nowAction === "ADD") {
-			const id = await fbUploadData(COL, form);
-			const profile = await fbUploadStorage(COL, id, profileInput.value.file);
-			await fbUpdateData(COL, id, {
-				profile
-			});
+		try {
+			// UPLOAD
+			if (nowAction === "ADD") {
+				const id = await fbUploadData(COL, form);
+				const profile = await fbUploadStorage(COL, id, profileInput.value.file);
+				await fbUpdateData(COL, id, {
+					profile
+				});
 
-			alert("성공적으로 업로드 했어요 😆");
-		} else if (nowAction === "EDIT") {
+				alert("성공적으로 업로드 했어요 😆");
+			} else if (nowAction === "EDIT") {
+				if (!profileInput.value.file) {
+					await fbUpdateData(COL, nowData.id, form);
+
+					setData((n) => n.map((el) => (el.id === nowData.id ? { ...el, ...form } : el)));
+				} else {
+					const profile = await fbUpdateStorage(nowData.profile.prevUrl, `${COL}`, nowData.id, profileInput.value.file);
+
+					await fbUpdateData(COL, nowData.id, {
+						...form,
+						profile
+					});
+					setData((n) => n.map((el) => (el.id === nowData.id ? { ...el, ...form, profile } : el)));
+				}
+				alert("성공적으로 수정 했어요 😆");
+			}
+		} catch (err) {
+			console.log(err);
 		}
 		initForm();
 	};
