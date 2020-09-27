@@ -12,6 +12,24 @@
   $gap: 8px;
   $column: 2;
 
+  .wrap-image {
+    width: 64px;
+    height: 64px;
+    margin-right: 8px;
+
+    .image-full {
+      height: 100%;
+      border-radius: 100%;
+      @include fullBg;
+    }
+
+  }
+
+  .wrap-text {
+    flex-grow: 1;
+  }
+
+  display: flex;
 
   cursor: pointer;
   width: calc((100% - #{$gap} * (#{$column} - 1)) /#{$column});

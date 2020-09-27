@@ -148,7 +148,7 @@ const Study = () => {
 	};
 	const initAdmin = () => {
 		initForm();
-		setNowData("");
+		setNowData(null);
 		setNowAction(null);
 	};
 

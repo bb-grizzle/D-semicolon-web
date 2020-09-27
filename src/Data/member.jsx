@@ -1,4 +1,20 @@
+import { useState, useEffect } from "react";
+import { fbGetData } from "../Firebase/firebase";
+const COL = "member";
 export const LINK_KEY_INITIAL = ["web", "instagram", "facebook", "github"];
+
+export const useMember = () => {
+	const [data, setData] = useState([]);
+	useEffect(() => {
+		const get = async () => {
+			const res = await fbGetData(COL, "grade", "desc");
+			setData(res);
+		};
+		get();
+	}, []);
+
+	return { data, setData };
+};
 
 export const MEMBER_INIT = {
 	firstName: "",
