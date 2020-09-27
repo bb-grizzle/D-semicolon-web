@@ -10,7 +10,7 @@ import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import ListAdmin from "../../component/admin/ListAdmin";
 import SubTitle from "../../component/SubTitle";
-import { arrayReverseObj,makeCount } from "../../../fn/default";
+import { makeCount } from "../../../fn/default";
 import useCheckInput from "../../../Hooks/useCheckInput";
 const COL = "member";
 
@@ -30,7 +30,6 @@ const Member = () => {
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
 	const { data, setData } = useMember();
-	const [filterData, setFilterData] = useState();
 
 
 

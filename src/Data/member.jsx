@@ -23,6 +23,23 @@ export const useMember = () => {
 	return { data, setData };
 };
 
+export const useContactMember = () => {
+	const [data, setData] = useState();
+	useEffect(() => {
+		const get = async () => {
+			const res = await fbGetData(COL, "grade", "desc");
+			const filter = res.filter(el => el.isContact===true)
+			console.log(filter)
+
+			setData(filter);
+			
+		};
+		get();
+	}, []);
+
+	return { data, setData };
+}
+
 export const MEMBER_INIT = {
 	firstName: "",
 	lastName: "",
