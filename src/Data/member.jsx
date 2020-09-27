@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { fbGetData } from "../Firebase/firebase";
+import { arrayReverseObj } from "../fn/default";
 const COL = "member";
 export const LINK_KEY_INITIAL = ["web", "instagram", "facebook", "github"];
 
@@ -8,10 +9,16 @@ export const useMember = () => {
 	useEffect(() => {
 		const get = async () => {
 			const res = await fbGetData(COL, "grade", "desc");
-			setData(res);
+			let filtered = {};
+			res.forEach(el => {
+				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el]
+			})			
+			setData(arrayReverseObj(filtered))
 		};
 		get();
 	}, []);
+
+	
 
 	return { data, setData };
 };

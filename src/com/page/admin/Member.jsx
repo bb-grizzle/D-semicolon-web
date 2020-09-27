@@ -32,15 +32,7 @@ const Member = () => {
 	const { data, setData } = useMember();
 	const [filterData, setFilterData] = useState();
 
-	useEffect(() => {
-		if(data){
-			let filtered = {};
-			data.forEach(el => {
-				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el]
-			})			
-			setFilterData(arrayReverseObj(filtered))
-		}
-	}, [data]);
+
 
 	useEffect(() => {
 		setForm({
@@ -168,7 +160,7 @@ const Member = () => {
 		<div>
 			<SectionTitle title="Member" />
 			
-			{filterData && filterData.map(el => {
+			{data && data.map(el => {
 
 			
 			return <div className="filter-wrapper" key={el.grade}>

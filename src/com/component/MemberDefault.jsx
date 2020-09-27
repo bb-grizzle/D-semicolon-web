@@ -5,7 +5,7 @@ const MemberDefault = ({ data, type, className }) => {
 	return (
 		<li className={`MemberDefault ${type} ${className}`}>
 			<div className="col">
-				<div className="avatar" style={{ backgroundImage: `url('${profile}')` }}></div>
+				<div className="avatar" style={{ backgroundImage: `url('${profile.url}')` }}></div>
 			</div>
 			<div className="col">
 				<p className="name">

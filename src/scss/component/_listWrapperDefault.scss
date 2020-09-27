@@ -19,7 +19,7 @@
     backdrop-filter: blur(12px);
     transition: $transition-default;
     z-index: $z-subTitle;
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     &.down {
       top: $height-headerLogo-pc;

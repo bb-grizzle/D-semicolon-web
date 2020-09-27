@@ -9,11 +9,11 @@ const MemberList = ({ data }) => {
 	return (
 		<div className="MemberList ListWrapperDefault">
 			<div className={`con ListDividerWrapper ${scrollDir === "up" ? "down" : ""}`}>
-				<SectionDevider title={`${makeCount(data.id)}`} />
+				<SectionDevider title={`${makeCount(data.grade)}`} />
 			</div>
 			<div className="con">
 				<ul className="list">
-					{data.member.map((el, index) => {
+					{data.data.map((el, index) => {
 						return <MemberDefault key={index} data={el} type="contact" className="item" />;
 					})}
 				</ul>
