@@ -8,6 +8,7 @@ import InputFile from "../input/InputFile";
 import FormTag from "./FormTag";
 import InputDropdown from "../input/InputDropdown";
 import InputKeyValue from "../input/InputKeyValue";
+import InputCheck from "../input/InputCheck";
 
 const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 	const nowAction = useNowAction();
@@ -40,6 +41,8 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 								);
 							case "file":
 								return <InputFile {...el} key={index} thumbnail={el.thumbnail} />;
+							case "check":
+								return <InputCheck {...el} key = {index} label={el.label} text={el.text}/>;
 							case "key-value":
 								return <InputKeyValue {...el} key={index} />;
 							default:

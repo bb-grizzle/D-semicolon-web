@@ -11,13 +11,15 @@ import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteD
 import ListAdmin from "../../component/admin/ListAdmin";
 import SubTitle from "../../component/SubTitle";
 import { arrayReverseObj,makeCount } from "../../../fn/default";
+import useCheckInput from "../../../Hooks/useCheckInput";
 const COL = "member";
 
 const Member = () => {
-	const firstNameInput = useInput("taewoong");
-	const lastNameInput = useInput("yoon");
-	const emailInput = useInput("test@test.com");
-	const tellInput = useInput("010.1234.1234");
+	const firstNameInput = useInput("");
+	const lastNameInput = useInput("");
+	const emailInput = useInput("");
+	const tellInput = useInput("");
+	const isContactInput = useCheckInput(false);
 	const linkInput = useKeyevalueInput({ initialKey: LINK_KEY_INITIAL[0], keys: LINK_KEY_INITIAL });
 	const profileInput = useFileInput();
 	const gradeInput = useInput(1);
@@ -47,9 +49,10 @@ const Member = () => {
 			email: emailInput.value,
 			tell: tellInput.value,
 			grade: +gradeInput.value,
-			contact
+			contact,
+			isContact: isContactInput.value
 		});
-	}, [contact, emailInput.value, firstNameInput.value, gradeInput.value, lastNameInput.value, tellInput.value]);
+	}, [isContactInput.value,contact, emailInput.value, firstNameInput.value, gradeInput.value, lastNameInput.value, tellInput.value]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -104,7 +107,8 @@ const Member = () => {
 		{ ...linkInput, label: "link", type: "key-value", onClick: handleLinkAddClick },
 		{ value: contact, type: "text-array" },
 		{ ...profileInput, label: "profile", type: "file", thumbnail: true },
-		{ ...gradeInput, label: "grade", inputType: "number" }
+		{ ...gradeInput, label: "grade", inputType: "number" },
+		{...isContactInput, label: "isContact", type: "check", text: "Contact에 포함시킬거라면 체크하세요."}
 	];
 	const initForm = () => {
 		firstNameInput.setValue("");
@@ -142,6 +146,7 @@ const Member = () => {
 				}
 			]);
 		});
+		isContactInput.setValue(data.isContact)
 	};
 	const handleDeleteClick = async (e, id) => {
 		e.stopPropagation();

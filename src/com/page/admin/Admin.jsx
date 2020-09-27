@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import Study from "./Study";
 import Member from "./Member";
-import Contact from "./Contact";
 import { IsUserLogin } from "../../context/AdminProvider";
 const Admin = () => {
 	const {
@@ -28,7 +27,6 @@ const Admin = () => {
 			<div className="con-small">
 				<Route path="/_admin/study" component={Study} />
 				<Route path="/_admin/member" component={Member} />
-				<Route path="/_admin/contact" component={Contact} />
 			</div>
 		</div>
 	);

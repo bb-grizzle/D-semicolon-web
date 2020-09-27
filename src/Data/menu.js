@@ -18,7 +18,4 @@ export const MENU_ADMIN = [{
 }, {
   name: 'member',
   href: "/_admin/member"
-}, {
-  name: 'contact',
-  href: "/_admin/contact"
 }];
