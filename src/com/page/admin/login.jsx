@@ -7,8 +7,8 @@ import { AdminContext } from "../../context/AdminProvider";
 import SectionTitle from "../../component/SectionTitle";
 
 const Login = () => {
-	const emailInput = useInput("test@test.com");
-	const passwordInput = useInput("test@test.com");
+	const emailInput = useInput("");
+	const passwordInput = useInput("");
 	const { setIsLogin } = useContext(AdminContext);
 
 	const handleSubmit = async (e) => {

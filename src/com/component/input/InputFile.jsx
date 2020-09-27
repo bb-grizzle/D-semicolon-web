@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const InputFile = ({ label, onChange, value, thumbnail }) => {
-	console.log(value);
+	
 	return (
 		<div className="InputDefault InputFile inputItem">
 			<div className="row">

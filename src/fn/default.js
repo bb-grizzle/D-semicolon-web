@@ -50,3 +50,22 @@ export const activeScroll = () => {
   document.body.style.height = "initial";
   document.body.style.overflow = "auto";
 }
+
+
+
+export const arrayReverseObj = (obj) => {
+  let newArray = []
+
+  Object.keys(obj)
+    .sort()
+    .reverse()
+    .forEach(key => {
+      console.log(key)
+      newArray.push( {
+      'grade':key, 
+      'data':obj[key]
+      })
+    })
+
+  return newArray  
+}

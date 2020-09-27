@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import Login from "./Login";
+import Login from "./login";
 import Admin from "./Admin";
 import { AdminContext, IsUserLogin } from "../../context/AdminProvider";
 import { fbAuthListener } from "../../../Firebase/firebase";

@@ -9,6 +9,8 @@ import { LINK_KEY_INITIAL, MEMBER_INIT, useMember } from "../../../Data/member";
 import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import ListAdmin from "../../component/admin/ListAdmin";
+import SubTitle from "../../component/SubTitle";
+import { arrayReverseObj,makeCount } from "../../../fn/default";
 const COL = "member";
 
 const Member = () => {
@@ -26,9 +28,16 @@ const Member = () => {
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
 	const { data, setData } = useMember();
+	const [filterData, setFilterData] = useState();
 
 	useEffect(() => {
-		console.log(data);
+		if(data){
+			let filtered = {};
+			data.forEach(el => {
+				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el]
+			})			
+			setFilterData(arrayReverseObj(filtered))
+		}
 	}, [data]);
 
 	useEffect(() => {
@@ -37,7 +46,7 @@ const Member = () => {
 			lastName: lastNameInput.value,
 			email: emailInput.value,
 			tell: tellInput.value,
-			grade: gradeInput.value,
+			grade: +gradeInput.value,
 			contact
 		});
 	}, [contact, emailInput.value, firstNameInput.value, gradeInput.value, lastNameInput.value, tellInput.value]);
@@ -57,6 +66,7 @@ const Member = () => {
 				await fbUpdateData(COL, id, {
 					profile
 				});
+				setData(n => [{...form, profile, id},...n])
 
 				alert("성공적으로 업로드 했어요 😆");
 			} else if (nowAction === "EDIT") {
@@ -152,22 +162,33 @@ const Member = () => {
 	return (
 		<div>
 			<SectionTitle title="Member" />
-			<ul className="ListAdmin-wrapper">
-				{data &&
-					data.map((el) => {
-						return (
-							<ListAdmin
-								id={el.id}
-								onClick={() => handleListClick(el)}
-								onDeleteClick={handleDeleteClick}
-								key={el.id}
-								title={`${el.firstName}, ${el.lastName}`}
-								contents={[{ keyValue: "grade", value: el.grade }]}
-								image={el.profile.url}
-							/>
-						);
-					})}
-			</ul>
+			
+			{filterData && filterData.map(el => {
+
+			
+			return <div className="filter-wrapper" key={el.grade}>
+				<SubTitle title={makeCount(+el.grade) } />
+				<ul className="ListAdmin-wrapper">
+								
+					{el.data &&
+						el.data.map((d) => {
+							
+							return (
+								<ListAdmin
+									id={d.id}
+									onClick={() => handleListClick(d)}
+									onDeleteClick={handleDeleteClick}
+									key={d.id}
+									title={`${d.firstName}, ${d.lastName}`}
+									contents={[{ keyValue: "grade", value: d.grade }]}
+									image={d.profile.url}
+								/>
+							);
+						})}
+						
+				</ul>
+			</div>
+			})}
 
 			<AdminFLoatingBtn />
 			<AdminForm title={"Add Member"} onSubmit={handleSubmit} contents={formContents} initForm={initForm} />

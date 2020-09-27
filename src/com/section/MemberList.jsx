@@ -9,7 +9,7 @@ const MemberList = ({ data }) => {
 	return (
 		<div className="MemberList ListWrapperDefault">
 			<div className={`con ListDividerWrapper ${scrollDir === "up" ? "down" : ""}`}>
-				<SectionDevider title={`${data.date}_${makeCount(data.id)}`} />
+				<SectionDevider title={`${makeCount(data.id)}`} />
 			</div>
 			<div className="con">
 				<ul className="list">
