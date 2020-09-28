@@ -219,7 +219,7 @@ const Member = () => {
 													key={d.id}
 													title={`${d.firstName}, ${d.lastName}`}
 													contents={[{ keyValue: "grade", value: d.grade }]}
-													image={d.profile.url}
+													image={d.profile.url ? d.profile.url : "placeholder"}
 												/>
 											);
 										})}

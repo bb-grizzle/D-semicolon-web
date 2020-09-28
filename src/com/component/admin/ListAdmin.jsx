@@ -11,9 +11,11 @@ const ListAdmin = ({ id, title, contents, onDeleteClick, onClick, image }) => {
 	};
 	return (
 		<li className="ListAdmin" onClick={handleListClick}>
-			<div className="wrap-image">
-				<Avatar url={image} className="image-full" />
-			</div>
+			{image !== undefined && (
+				<div className="wrap-image">
+					<Avatar url={image !== "placeholder" ? image : undefined} className="image-full" />
+				</div>
+			)}
 
 			<div className="wrap-text">
 				<div className="wrap-title">
