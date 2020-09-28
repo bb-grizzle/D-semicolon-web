@@ -42,11 +42,11 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 							case "file":
 								return <InputFile {...el} key={index} thumbnail={el.thumbnail} />;
 							case "check":
-								return <InputCheck {...el} key = {index} label={el.label} text={el.text}/>;
+								return <InputCheck {...el} key={index} label={el.label} text={el.text} />;
 							case "key-value":
 								return <InputKeyValue {...el} key={index} />;
 							default:
-								return <InputDefault {...el} key={index} placeholder={el.label} type={el.inputType} />;
+								return <InputDefault {...el} key={index} placeholder={el.label} type={el.inputType} maxLength={el.maxLength} />;
 						}
 					})}
 					<Submit value="추가" />

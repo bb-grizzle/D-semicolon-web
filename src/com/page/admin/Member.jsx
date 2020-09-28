@@ -15,10 +15,15 @@ import useCheckInput from "../../../Hooks/useCheckInput";
 const COL = "member";
 
 const Member = () => {
-	const firstNameInput = useInput("testfirstname");
-	const lastNameInput = useInput("lastname");
-	const emailInput = useInput("test@test.com");
-	const tellInput = useInput("12312341234");
+	const firstNameInput = useInput("");
+	const lastNameInput = useInput("");
+	const emailInput = useInput("");
+	const tellInput = useInput("", (value) => {
+		return value
+			.replace(/[^0-9]/g, "")
+			.replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1.$2.$3")
+			.replace("..", ".");
+	});
 	const isContactInput = useCheckInput(false);
 	const linkInput = useKeyevalueInput({ initialKey: LINK_KEY_INITIAL[0], keys: LINK_KEY_INITIAL });
 	const profileInput = useFileInput();
@@ -112,7 +117,7 @@ const Member = () => {
 		{ ...firstNameInput, label: "first name" },
 		{ ...lastNameInput, label: "last name" },
 		{ ...emailInput, label: "email", inputType: "email" },
-		{ ...tellInput, label: "tell" },
+		{ ...tellInput, label: "tell", maxLength: 13 },
 		{ ...linkInput, label: "link", type: "key-value", onClick: handleLinkAddClick },
 		{ value: contact, type: "text-array" },
 		{ ...profileInput, label: "profile", type: "file", thumbnail: true },
@@ -168,15 +173,17 @@ const Member = () => {
 			await fbDeleteStorage(`${COL}/${id}`);
 			await fbDeleteData(COL, id);
 			setData((n) =>
-				n.map((el) => {
-					const newData = el.data.filter((d) => d.id !== id);
-					return newData.length > 0
-						? {
-								...el,
-								data: newData
-						  }
-						: null;
-				})
+				n
+					.map((el) => {
+						const newData = el.data.filter((d) => d.id !== id);
+						return newData.length > 0
+							? {
+									...el,
+									data: newData
+							  }
+							: null;
+					})
+					.filter((el) => el !== null)
 			);
 			alert("삭제 되었어요...");
 		} catch (err) {
@@ -189,26 +196,28 @@ const Member = () => {
 
 			{data &&
 				data.map((el) => {
-					return !el ? null : (
-						<div className="filter-wrapper" key={el.grade}>
-							<SubTitle title={makeCount(+el.grade)} />
-							<ul className="ListAdmin-wrapper">
-								{el.data &&
-									el.data.map((d) => {
-										return (
-											<ListAdmin
-												id={d.id}
-												onClick={() => handleListClick(d)}
-												onDeleteClick={handleDeleteClick}
-												key={d.id}
-												title={`${d.firstName}, ${d.lastName}`}
-												contents={[{ keyValue: "grade", value: d.grade }]}
-												image={d.profile.url}
-											/>
-										);
-									})}
-							</ul>
-						</div>
+					return (
+						el !== null && (
+							<div className="filter-wrapper" key={el.grade}>
+								<SubTitle title={makeCount(+el.grade)} />
+								<ul className="ListAdmin-wrapper">
+									{el.data &&
+										el.data.map((d) => {
+											return (
+												<ListAdmin
+													id={d.id}
+													onClick={() => handleListClick(d)}
+													onDeleteClick={handleDeleteClick}
+													key={d.id}
+													title={`${d.firstName}, ${d.lastName}`}
+													contents={[{ keyValue: "grade", value: d.grade }]}
+													image={d.profile.url}
+												/>
+											);
+										})}
+								</ul>
+							</div>
+						)
 					);
 				})}
 

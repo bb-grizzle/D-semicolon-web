@@ -10,15 +10,13 @@ export const useMember = () => {
 		const get = async () => {
 			const res = await fbGetData(COL, "grade", "desc");
 			let filtered = {};
-			res.forEach(el => {
-				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el]
-			})			
-			setData(arrayReverseObj(filtered))
+			res.forEach((el) => {
+				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el];
+			});
+			setData(arrayReverseObj(filtered));
 		};
 		get();
 	}, []);
-
-	
 
 	return { data, setData };
 };
@@ -28,17 +26,14 @@ export const useContactMember = () => {
 	useEffect(() => {
 		const get = async () => {
 			const res = await fbGetData(COL, "grade", "desc");
-			const filter = res.filter(el => el.isContact===true)
-			console.log(filter)
-
+			const filter = res.filter((el) => el.isContact === true);
 			setData(filter);
-			
 		};
 		get();
 	}, []);
 
 	return { data, setData };
-}
+};
 
 export const MEMBER_INIT = {
 	firstName: "",
