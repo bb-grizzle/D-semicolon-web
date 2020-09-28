@@ -9,7 +9,6 @@ const Avatar = ({ url, className }) => {
 			const dom = document.createElement("img");
 			dom.src = url;
 			dom.onload = () => {
-				console.log("onload");
 				setActive(true);
 			};
 		} else {

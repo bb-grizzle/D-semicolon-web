@@ -60,7 +60,6 @@ export const arrayReverseObj = (obj) => {
     .sort()
     .reverse()
     .forEach(key => {
-      console.log(key)
       newArray.push({
         'grade': key,
         'data': obj[key]

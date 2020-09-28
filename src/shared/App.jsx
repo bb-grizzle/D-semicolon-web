@@ -13,6 +13,7 @@ import { useWindowSize } from "fn/default";
 import { useScrollDirection } from "../Hooks";
 import { fullHeight, preventScroll, activeScroll } from "../fn/default";
 import AdminProvider from "../com/context/AdminProvider";
+import MetaLayout from "../com/MetaLayout";
 
 // context
 export const AppContext = createContext();
@@ -54,6 +55,13 @@ function App() {
 
 	return (
 		<div className="App">
+			<MetaLayout
+				headData={{
+					description: "Designers Coding",
+					title: "D-semicolon",
+					url: "https://d-semicolon.web.app/"
+				}}
+			/>
 			<AdminProvider>
 				<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir }}>
 					<Header hide={scrollDir === "down" ? true : false} />

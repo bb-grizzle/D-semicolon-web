@@ -1,11 +1,11 @@
 .Loading {
   position: fixed;
-  top: 0;
+  top: $height-header-pc;
   left: 0;
-  height: $height-full;
+  height: calc(#{$height-full} - #{$height-header-pc});
   width: 100%;
   z-index: $z-loading;
-  background-color: white;
+  background-color: $color-gray-light;
   padding: 5rem;
   transition: $transition-default;
   opacity: 0;
@@ -14,7 +14,6 @@
 
   &.active {
     opacity: 1;
-
   }
 
   .semicolon {
