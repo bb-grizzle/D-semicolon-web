@@ -18,7 +18,7 @@ const Avatar = ({ url, className }) => {
 
 	return (
 		<div className={`Avatar avatar ${className} ${active ? "active " : ""}`} style={{ backgroundImage: `url('${url ? url : "initial"}')` }}>
-			{!url && <PlaceholderProfile />}
+			{!url && <PlaceholderProfile className={"placeholder"} />}
 		</div>
 	);
 };

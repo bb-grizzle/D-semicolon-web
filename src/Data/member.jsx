@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { fbGetData } from "../Firebase/firebase";
 import { arrayReverseObj } from "../fn/default";
 const COL = "member";
-export const LINK_KEY_INITIAL = ["web", "instagram", "facebook", "github"];
+export const LINK_KEY_INITIAL = ["web", "behance", "instagram", "facebook", "github"];
 
 export const useMember = () => {
 	const [data, setData] = useState();
@@ -116,7 +116,7 @@ export default [
 				]
 			},
 			{
-				firstName: "hyunzoo",
+				firstName: "hyeonju",
 				lastName: "lee",
 				profile:
 					"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-1/s480x480/30594629_1514213988689309_4609362174832279552_n.jpg?_nc_cat=103&_nc_sid=7206a8&_nc_eui2=AeFua_sLXkMZkbGWPzN-EQhubmrRI53_eUJuatEjnf95QgyYiCj7BqdEWqfLTop4fbQxxKSBCgGwcbBcyIgQbriB&_nc_ohc=t5hufZRAOgoAX-WGvPW&_nc_ht=scontent-ssn1-1.xx&_nc_tp=7&oh=ec31f99d6f995fd1a375c76074fd11ca&oe=5F39E5D5",

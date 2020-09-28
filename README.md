@@ -22,6 +22,7 @@
   - [x] placeholder profile
   - [x] home image ratio
   - [ ] animation
-  - [ ] favicon
-  - [ ] og tag
+  - [x] favicon
+  - [x] og tag
   - [ ] Can't perform a React state update on an unmounted component. issue
+  - [ ] add data

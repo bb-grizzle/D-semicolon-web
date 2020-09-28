@@ -50,7 +50,7 @@ const Member = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !tellInput.value || !gradeInput.value) {
+		if (!firstNameInput.value || !lastNameInput.value || !gradeInput.value) {
 			alert("양식을 모두 채워주세요. 🤥");
 			return;
 		}
@@ -134,6 +134,7 @@ const Member = () => {
 		linkInput.init();
 		profileInput.initFile();
 		gradeInput.setValue("");
+		isContactInput.setValue(false);
 		setContact([]);
 		setNowAction(null);
 		setNowData(null);
@@ -172,7 +173,19 @@ const Member = () => {
 		}
 
 		try {
-			await fbDeleteStorage(`${COL}/${id}`);
+			let path = "";
+			data.forEach((el) => {
+				if (el.id === id) {
+					if (el.url) {
+						path = `${COL}/${id}`;
+					}
+				}
+			});
+
+			if (path) {
+				await fbDeleteStorage(path);
+			}
+
 			await fbDeleteData(COL, id);
 			setData((n) =>
 				n

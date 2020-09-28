@@ -111,6 +111,15 @@ const Study = () => {
 	const handleDeleteClick = async (e, id) => {
 		e.stopPropagation();
 
+		let category;
+		Object.keys(data).forEach((key) => {
+			data[key].forEach((d) => {
+				if (d.id === id) {
+					category = d.category;
+				}
+			});
+		});
+
 		if (!window.confirm("정말 삭제할건가요? 😩🗑")) {
 			return;
 		}
@@ -118,7 +127,10 @@ const Study = () => {
 		try {
 			await fbDeleteStorage(`${COL}/${id}`);
 			await fbDeleteData(COL, id);
-			setData((n) => n.filter((el) => el.id !== id));
+			setData((n) => ({
+				...n,
+				[category]: n[category].filter((el) => el.id !== id)
+			}));
 			alert("삭제 되었어요...");
 		} catch (err) {
 			console.log(err);

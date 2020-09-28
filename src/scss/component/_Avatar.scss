@@ -1,6 +1,11 @@
 .Avatar {
   opacity: 0;
   transition: $transition-default;
+  @include center_flex;
+
+  .placeholder {
+    width: 100%;
+  }
 
   &.active {
     opacity: 1;
