@@ -35,6 +35,10 @@ export const useContactMember = () => {
 	return { data, setData };
 };
 
+export const contactMember = (data) => {
+	return data.filter((el) => el.isContact === true);
+};
+
 export const MEMBER_INIT = {
 	firstName: "",
 	lastName: "",
@@ -149,49 +153,49 @@ export default [
 	}
 ];
 
-export const contactMember = [
-	{
-		firstName: "taewoong",
-		lastName: "yoon",
-		profile:
-			"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-1/p480x480/56520121_2533666066703855_5762240484953030656_o.jpg?_nc_cat=106&_nc_sid=7206a8&_nc_eui2=AeFJmSabgkuWCF439sja_H9RnYno2zmlqY6diejbOaWpjrX9jm6ePomqGGRf4MaL-sOSFJgTCuquH0l_acOTER5x&_nc_ohc=0WhbS76OJ1oAX8pR26-&_nc_ht=scontent-ssn1-1.xx&_nc_tp=6&oh=e8435628441348320c9fbc64bc6b0346&oe=5F3971CD",
-		email: "firbigi1993@gmail.com",
-		tell: "010.3603.4925",
-		contact: [
-			{
-				name: "web",
-				link: "https://grizzle.co.kr/"
-			},
-			{
-				name: "instagram",
-				link: "https://www.instagram.com/bb._.grizzle/"
-			},
-			{
-				name: "facebook",
-				link: "https://www.facebook.com/profile.php?id=100001814606690"
-			},
-			{
-				name: "github",
-				link: "https://github.com/bb-grizzle"
-			}
-		]
-	},
-	{
-		firstName: "Haein",
-		lastName: "Seo",
-		profile:
-			"https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s320x320/60352622_1934545739980515_700417103353610240_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=f2sqlrEavmEAX99M1Hs&oh=2dce89d9ca54779bb9114568aceb7b95&oe=5F3CDBBB",
-		email: "she3719@naver.com",
-		tell: "010.4129.2202",
-		contact: [
-			{
-				name: "behance",
-				link: "https://www.behance.net/haein3719e28a"
-			},
-			{
-				name: "instagram",
-				link: "https://www.instagram.com/haen_zz/"
-			}
-		]
-	}
-];
+// export const contactMember = [
+// 	{
+// 		firstName: "taewoong",
+// 		lastName: "yoon",
+// 		profile:
+// 			"https://scontent-ssn1-1.xx.fbcdn.net/v/t1.0-1/p480x480/56520121_2533666066703855_5762240484953030656_o.jpg?_nc_cat=106&_nc_sid=7206a8&_nc_eui2=AeFJmSabgkuWCF439sja_H9RnYno2zmlqY6diejbOaWpjrX9jm6ePomqGGRf4MaL-sOSFJgTCuquH0l_acOTER5x&_nc_ohc=0WhbS76OJ1oAX8pR26-&_nc_ht=scontent-ssn1-1.xx&_nc_tp=6&oh=e8435628441348320c9fbc64bc6b0346&oe=5F3971CD",
+// 		email: "firbigi1993@gmail.com",
+// 		tell: "010.3603.4925",
+// 		contact: [
+// 			{
+// 				name: "web",
+// 				link: "https://grizzle.co.kr/"
+// 			},
+// 			{
+// 				name: "instagram",
+// 				link: "https://www.instagram.com/bb._.grizzle/"
+// 			},
+// 			{
+// 				name: "facebook",
+// 				link: "https://www.facebook.com/profile.php?id=100001814606690"
+// 			},
+// 			{
+// 				name: "github",
+// 				link: "https://github.com/bb-grizzle"
+// 			}
+// 		]
+// 	},
+// 	{
+// 		firstName: "Haein",
+// 		lastName: "Seo",
+// 		profile:
+// 			"https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s320x320/60352622_1934545739980515_700417103353610240_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=f2sqlrEavmEAX99M1Hs&oh=2dce89d9ca54779bb9114568aceb7b95&oe=5F3CDBBB",
+// 		email: "she3719@naver.com",
+// 		tell: "010.4129.2202",
+// 		contact: [
+// 			{
+// 				name: "behance",
+// 				link: "https://www.behance.net/haein3719e28a"
+// 			},
+// 			{
+// 				name: "instagram",
+// 				link: "https://www.instagram.com/haen_zz/"
+// 			}
+// 		]
+// 	}
+// ];

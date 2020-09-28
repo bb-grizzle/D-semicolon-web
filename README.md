@@ -18,9 +18,10 @@
 
 - etc
   - [x] member link
-  - [ ] loading
+  - [x] loading
   - [x] placeholder profile
   - [x] home image ratio
   - [ ] animation
   - [ ] favicon
   - [ ] og tag
+  - [ ] Can't perform a React state update on an unmounted component. issue

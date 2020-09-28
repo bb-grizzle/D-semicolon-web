@@ -1,0 +1,26 @@
+.Loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $height-full;
+  width: 100%;
+  z-index: $z-loading;
+  background-color: white;
+  padding: 5rem;
+  transition: $transition-default;
+  opacity: 0;
+  @include prevent-event;
+  transition-delay: .5s;
+
+  &.active {
+    opacity: 1;
+
+  }
+
+  .semicolon {
+    // border: 1px solid red;
+    width: 32px;
+    margin-right: 8px;
+    margin-bottom: 32px;
+  }
+}

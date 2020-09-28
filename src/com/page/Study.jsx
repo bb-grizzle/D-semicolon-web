@@ -2,11 +2,13 @@ import React from "react";
 
 import StudyList from "../section/StudyList";
 import { useStudy, BASIC_CATEGORY } from "../../Data/study";
+import Loading from "../component/Loading";
 
 const Study = () => {
 	const { data } = useStudy();
 	return (
 		<section className="Study paddingDefualt">
+			<Loading active={!data ? true : false} />
 			<div className="ListGroupWrapper">
 				{data &&
 					BASIC_CATEGORY.map((el) => {

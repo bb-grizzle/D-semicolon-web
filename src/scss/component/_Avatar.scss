@@ -1,0 +1,8 @@
+.Avatar {
+  opacity: 0;
+  transition: $transition-default;
+
+  &.active {
+    opacity: 1;
+  }
+}

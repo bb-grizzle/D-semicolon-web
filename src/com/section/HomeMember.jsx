@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // component
 import { SectionTitle, ListMember } from "com/component";
 // field
 import { makeCount } from "../../fn/default";
-import { useMember } from "../../Data/member";
 
-const HomeMember = () => {
-	const {data : res} = useMember();
-	const [data, setData] = useState();
-
-	useEffect(() => {
-		if(res){
-			
-			setData(res[0])
-		}
-	}, [res])
-
+const HomeMember = ({ data }) => {
 	const renderData = (data) => {
 		return (
 			<div className="wrap-members">

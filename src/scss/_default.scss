@@ -202,3 +202,13 @@ $transition-default : all .3s ease-in-out;
     margin-bottom: 40px;
   }
 }
+
+@mixin prevent-event {
+  user-select: none;
+  pointer-events: none;
+}
+
+@mixin active-event {
+  user-select: initial;
+  pointer-events: initial;
+}
