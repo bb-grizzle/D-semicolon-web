@@ -3,14 +3,14 @@ import MemberList from "../section/MemberList";
 import { useMember } from "../../Data/member";
 
 const Member = () => {
-	const {data} = useMember();
-	console.log(data)
+	const { data } = useMember();
 	return (
 		<section className="Member paddingDefualt ">
 			<div className="ListGroupWrapper">
-				{data && data.map((el, index) => {
-					return <MemberList data={el} key={index} />;
-				})}
+				{data &&
+					data.map((el, index) => {
+						return <MemberList data={el} key={index} />;
+					})}
 			</div>
 		</section>
 	);

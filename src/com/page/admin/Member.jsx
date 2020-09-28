@@ -37,12 +37,6 @@ const Member = () => {
 	const { data, setData } = useMember();
 
 	useEffect(() => {
-		if (data) {
-			console.log(data);
-		}
-	}, [data]);
-
-	useEffect(() => {
 		setForm({
 			firstName: firstNameInput.value,
 			lastName: lastNameInput.value,

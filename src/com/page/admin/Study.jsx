@@ -44,7 +44,6 @@ const Study = () => {
 			};
 
 			if (!options.includes(categoryInput.value)) {
-				console.log("add new category");
 				await fbUpdateData(COL, "init", {
 					option: [...options, categoryInput.value]
 				});
