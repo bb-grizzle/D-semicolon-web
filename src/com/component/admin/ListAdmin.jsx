@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useSetNowAction } from "../../context/AdminProvider";
+import Avatar from "../Avatar";
 const ListAdmin = ({ id, title, contents, onDeleteClick, onClick, image }) => {
 	const setNowAction = useSetNowAction();
 
@@ -10,11 +11,10 @@ const ListAdmin = ({ id, title, contents, onDeleteClick, onClick, image }) => {
 	};
 	return (
 		<li className="ListAdmin" onClick={handleListClick}>
-			{image && (
-				<div className="wrap-image">
-					<div className="image-full" style={{ backgroundImage: `url("${image}")` }}></div>
-				</div>
-			)}
+			<div className="wrap-image">
+				<Avatar url={image} className="image-full" />
+			</div>
+
 			<div className="wrap-text">
 				<div className="wrap-title">
 					<h3 className="title">{title}</h3>

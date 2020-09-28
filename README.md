@@ -17,6 +17,10 @@
     - [x] delete
 
 - etc
-  - [ ] member link
-  - [ ] placeholder profile
-  - [ ] home image ratio
+  - [x] member link
+  - [ ] loading
+  - [x] placeholder profile
+  - [x] home image ratio
+  - [ ] animation
+  - [ ] favicon
+  - [ ] og tag

@@ -1,11 +1,12 @@
 import React from "react";
+import Avatar from "./Avatar";
 
 const MemberDefault = ({ data, type, className }) => {
 	const { firstName, lastName, tell, profile, email, contact } = data;
 	return (
 		<li className={`MemberDefault ${type} ${className}`}>
 			<div className="col">
-				<div className="avatar" style={{ backgroundImage: `url('${profile.url}')` }}></div>
+				<Avatar url={profile.url} />
 			</div>
 			<div className="col">
 				<p className="name">
@@ -23,13 +24,13 @@ const MemberDefault = ({ data, type, className }) => {
 						</li>
 					</ul>
 				) : (
-					<ul>
+					<ul className="wrap-contact">
 						{contact.map((contact, index) => {
 							return (
 								<li className="item contact" key={index}>
 									<p className="value">
 										<a href={contact.link} target="_blank" rel="noopener noreferrer">
-											{contact.name}
+											{`_ ${contact.name}`}
 										</a>
 									</p>
 								</li>

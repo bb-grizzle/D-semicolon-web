@@ -56,7 +56,7 @@ const Member = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !tellInput.value || !profileInput.value.fileName || !gradeInput.value) {
+		if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !tellInput.value || !gradeInput.value) {
 			alert("양식을 모두 채워주세요. 🤥");
 			return;
 		}
@@ -65,11 +65,19 @@ const Member = () => {
 			// UPLOAD
 			if (nowAction === "ADD") {
 				const id = await fbUploadData(COL, form);
-				const profile = await fbUploadStorage(COL, id, profileInput.value.file);
+
+				const profile = profileInput.value.file
+					? await fbUploadStorage(COL, id, profileInput.value.file)
+					: {
+							url: "",
+							prevUrl: "",
+							file: null
+					  };
+
 				await fbUpdateData(COL, id, {
 					profile
 				});
-				// setData((n) => [{ ...form, profile, id }, ...n]);
+
 				const newData = { ...form, profile, id };
 
 				setData((n) =>
