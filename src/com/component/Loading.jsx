@@ -26,9 +26,11 @@ const Loading = ({ active }) => {
 
 	return (
 		<div className={`Loading ${active ? "active" : ""}`}>
-			{Array.from(Array(count)).map((x, index) => (
-				<Semicolon key={index} className={"semicolon"} />
-			))}
+			<div className="con">
+				{Array.from(Array(count)).map((x, index) => (
+					<Semicolon key={index} className={"semicolon"} />
+				))}
+			</div>
 		</div>
 	);
 };
