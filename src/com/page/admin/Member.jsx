@@ -10,15 +10,15 @@ import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import ListAdmin from "../../component/admin/ListAdmin";
 import SubTitle from "../../component/SubTitle";
-import { makeCount } from "../../../fn/default";
+import { makeCount, checkObjectContain } from "../../../fn/default";
 import useCheckInput from "../../../Hooks/useCheckInput";
 const COL = "member";
 
 const Member = () => {
-	const firstNameInput = useInput("");
-	const lastNameInput = useInput("");
-	const emailInput = useInput("");
-	const tellInput = useInput("");
+	const firstNameInput = useInput("testfirstname");
+	const lastNameInput = useInput("lastname");
+	const emailInput = useInput("test@test.com");
+	const tellInput = useInput("12312341234");
 	const isContactInput = useCheckInput(false);
 	const linkInput = useKeyevalueInput({ initialKey: LINK_KEY_INITIAL[0], keys: LINK_KEY_INITIAL });
 	const profileInput = useFileInput();
@@ -31,7 +31,11 @@ const Member = () => {
 	const setNowAction = useSetNowAction();
 	const { data, setData } = useMember();
 
-
+	useEffect(() => {
+		if (data) {
+			console.log(data);
+		}
+	}, [data]);
 
 	useEffect(() => {
 		setForm({
@@ -43,7 +47,7 @@ const Member = () => {
 			contact,
 			isContact: isContactInput.value
 		});
-	}, [isContactInput.value,contact, emailInput.value, firstNameInput.value, gradeInput.value, lastNameInput.value, tellInput.value]);
+	}, [isContactInput.value, contact, emailInput.value, firstNameInput.value, gradeInput.value, lastNameInput.value, tellInput.value]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -60,14 +64,28 @@ const Member = () => {
 				await fbUpdateData(COL, id, {
 					profile
 				});
-				setData(n => [{...form, profile, id},...n])
+				// setData((n) => [{ ...form, profile, id }, ...n]);
+				const newData = { ...form, profile, id };
+
+				setData((n) =>
+					checkObjectContain(n, { grade: `${form.grade}` })
+						? n.map((d) => {
+								return {
+									...d,
+									data: [newData, ...d.data]
+								};
+						  })
+						: n.concat({
+								grade: `${form.grade}`,
+								data: [newData]
+						  })
+				);
 
 				alert("성공적으로 업로드 했어요 😆");
 			} else if (nowAction === "EDIT") {
 				if (!profileInput.value.file) {
 					await fbUpdateData(COL, nowData.id, form);
-
-					setData((n) => n.map((el) => (el.id === nowData.id ? { ...el, ...form } : el)));
+					setData((n) => n.map((el) => (el.grade === `${nowData.grade}` ? { ...el, data: el.data.map((d) => (d.id === nowData.id ? { ...d, ...form } : d)) } : el)));
 				} else {
 					const profile = await fbUpdateStorage(nowData.profile.prevUrl, `${COL}`, nowData.id, profileInput.value.file);
 
@@ -75,7 +93,7 @@ const Member = () => {
 						...form,
 						profile
 					});
-					setData((n) => n.map((el) => (el.id === nowData.id ? { ...el, ...form, profile } : el)));
+					setData((n) => n.map((el) => (el.grade === `${nowData.grade}` ? { ...el, data: el.data.map((d) => (d.id === nowData.id ? { ...d, ...form, profile } : d)) } : el)));
 				}
 				alert("성공적으로 수정 했어요 😆");
 			}
@@ -99,7 +117,7 @@ const Member = () => {
 		{ value: contact, type: "text-array" },
 		{ ...profileInput, label: "profile", type: "file", thumbnail: true },
 		{ ...gradeInput, label: "grade", inputType: "number" },
-		{...isContactInput, label: "isContact", type: "check", text: "Contact에 포함시킬거라면 체크하세요."}
+		{ ...isContactInput, label: "isContact", type: "check", text: "Contact에 포함시킬거라면 체크하세요." }
 	];
 	const initForm = () => {
 		firstNameInput.setValue("");
@@ -137,7 +155,7 @@ const Member = () => {
 				}
 			]);
 		});
-		isContactInput.setValue(data.isContact)
+		isContactInput.setValue(data.isContact);
 	};
 	const handleDeleteClick = async (e, id) => {
 		e.stopPropagation();
@@ -149,7 +167,17 @@ const Member = () => {
 		try {
 			await fbDeleteStorage(`${COL}/${id}`);
 			await fbDeleteData(COL, id);
-			setData((n) => n.filter((el) => el.id !== id));
+			setData((n) =>
+				n.map((el) => {
+					const newData = el.data.filter((d) => d.id !== id);
+					return newData.length > 0
+						? {
+								...el,
+								data: newData
+						  }
+						: null;
+				})
+			);
 			alert("삭제 되었어요...");
 		} catch (err) {
 			console.log(err);
@@ -158,33 +186,31 @@ const Member = () => {
 	return (
 		<div>
 			<SectionTitle title="Member" />
-			
-			{data && data.map(el => {
 
-			
-			return <div className="filter-wrapper" key={el.grade}>
-				<SubTitle title={makeCount(+el.grade) } />
-				<ul className="ListAdmin-wrapper">
-								
-					{el.data &&
-						el.data.map((d) => {
-							
-							return (
-								<ListAdmin
-									id={d.id}
-									onClick={() => handleListClick(d)}
-									onDeleteClick={handleDeleteClick}
-									key={d.id}
-									title={`${d.firstName}, ${d.lastName}`}
-									contents={[{ keyValue: "grade", value: d.grade }]}
-									image={d.profile.url}
-								/>
-							);
-						})}
-						
-				</ul>
-			</div>
-			})}
+			{data &&
+				data.map((el) => {
+					return !el ? null : (
+						<div className="filter-wrapper" key={el.grade}>
+							<SubTitle title={makeCount(+el.grade)} />
+							<ul className="ListAdmin-wrapper">
+								{el.data &&
+									el.data.map((d) => {
+										return (
+											<ListAdmin
+												id={d.id}
+												onClick={() => handleListClick(d)}
+												onDeleteClick={handleDeleteClick}
+												key={d.id}
+												title={`${d.firstName}, ${d.lastName}`}
+												contents={[{ keyValue: "grade", value: d.grade }]}
+												image={d.profile.url}
+											/>
+										);
+									})}
+							</ul>
+						</div>
+					);
+				})}
 
 			<AdminFLoatingBtn />
 			<AdminForm title={"Add Member"} onSubmit={handleSubmit} contents={formContents} initForm={initForm} />

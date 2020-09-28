@@ -61,11 +61,30 @@ export const arrayReverseObj = (obj) => {
     .reverse()
     .forEach(key => {
       console.log(key)
-      newArray.push( {
-      'grade':key, 
-      'data':obj[key]
+      newArray.push({
+        'grade': key,
+        'data': obj[key]
       })
     })
 
-  return newArray  
+  return newArray
+}
+
+export const checkObjectContain = (arr, obj) => {
+  return arr.some((item) => shallowEqual(item, obj));
+};
+
+function shallowEqual(object1, object2) {
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+
+  for (let key of keys1) {
+    for (let key2 of keys2) {
+      if (object1[key] === object2[key2]) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
