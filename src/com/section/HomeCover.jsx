@@ -40,7 +40,9 @@ const HomeCover = () => {
 		setSemi(randSemi);
 	};
 
-	useInterval(makeRandomImage, 500);
+	useInterval(() => {
+		makeRandomImage();
+	}, 500);
 
 	useEffect(() => {
 		makeRandomImage();
@@ -50,7 +52,12 @@ const HomeCover = () => {
 		<section className="HomeCover">
 			<div className="con div">
 				<div className="wrap-img">
-					<div className="intro" style={{ backgroundImage: `url('${intro_arr[introImage]}')` }} alt="intro"></div>
+					<div className="intro" alt="intro">
+						{intro_arr &&
+							intro_arr.map((el, index) => {
+								return <div key={index} className={`image-ref ${index === introImage ? "active " : ""}`} style={{ backgroundImage: `url('${el}')` }}></div>;
+							})}
+					</div>
 					<img className="semicolon" src={semi ? semi_w : semi_b} alt="seicolon" />
 				</div>
 			</div>

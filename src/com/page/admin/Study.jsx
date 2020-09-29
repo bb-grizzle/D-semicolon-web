@@ -45,6 +45,7 @@ const Study = () => {
 			alert("양식을 모두 채워주세요. 🤥");
 			return;
 		}
+		setLoading(true);
 
 		try {
 			const uploadData = {
@@ -65,7 +66,7 @@ const Study = () => {
 				const id = await fbUploadData(COL, uploadData);
 
 				// 파일 업로드
-				const file = await fbUploadStorage(`${COL}`, id, fileInput.value.file);
+				const file = await fbUploadStorage(`${COL}/${id}`, fileInput.value.fileName, fileInput.value.file);
 
 				const newData = {
 					...uploadData,
@@ -102,7 +103,7 @@ const Study = () => {
 						)
 					}));
 				} else {
-					const file = await fbUpdateStorage(nowData.file.prevUrl, `${COL}`, nowData.id, fileInput.value.file);
+					const file = await fbUpdateStorage(nowData.file.prevUrl, `${COL}/${nowData.id}`, fileInput.value.fileName, fileInput.value.file);
 
 					await fbUpdateData(COL, nowData.id, {
 						...uploadData,
@@ -177,6 +178,7 @@ const Study = () => {
 		contentsInput.setValue("");
 		categoryInput.setIsAddClick(false);
 		setContentsArr([]);
+		setLoading(false);
 	};
 	const initAdmin = () => {
 		initForm();
