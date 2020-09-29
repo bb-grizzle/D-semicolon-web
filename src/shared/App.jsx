@@ -14,12 +14,15 @@ import { useScrollDirection } from "../Hooks";
 import { fullHeight, preventScroll, activeScroll } from "../fn/default";
 import AdminProvider from "../com/context/AdminProvider";
 import MetaLayout from "../com/MetaLayout";
+import Loading from "../com/component/Loading";
 
 // context
 export const AppContext = createContext();
 
 function App() {
 	const [isMenu, setIsMenu] = useState(false);
+	const [loading, setLoading] = useState(false);
+
 	const { listen } = useHistory();
 
 	const scrollDir = useScrollDirection({ initialDirection: 0, thresholdPixels: 0, off: false });
@@ -63,9 +66,10 @@ function App() {
 				}}
 			/>
 			<AdminProvider>
-				<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir }}>
+				<AppContext.Provider value={{ screenType, isMenu, setIsMenu, scrollDir, loading, setLoading }}>
 					<Header hide={scrollDir === "down" ? true : false} />
 					<Menu />
+					<Loading />
 
 					<Switch>
 						<Route exact path="/" component={Home} />

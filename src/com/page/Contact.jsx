@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useContactMember } from "../../Data/member";
 import ContactList from "../section/ContactList";
-import Loading from "../component/Loading";
+import { AppContext } from "../../shared/App";
 const Contact = () => {
 	const { data } = useContactMember();
+	const { setLoading } = useContext(AppContext);
+	useEffect(() => {
+		if (data) {
+			setLoading(false);
+		} else {
+			setLoading(true);
+		}
+	}, [data, setLoading]);
 	return (
 		<section className="Contact paddingDefualt">
-			<Loading active={!data ? true : false} />
 			<div className="ListGroupWrapper ">{data && <ContactList data={data} />}</div>
 		</section>
 	);

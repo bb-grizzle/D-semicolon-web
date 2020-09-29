@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import MemberList from "../section/MemberList";
 import { useMember } from "../../Data/member";
-import Loading from "../component/Loading";
+import { AppContext } from "../../shared/App";
 
 const Member = () => {
 	const { data } = useMember();
+	const { setLoading } = useContext(AppContext);
+
+	useEffect(() => {
+		if (data) {
+			setLoading(false);
+		} else {
+			setLoading(true);
+		}
+	}, [data, setLoading]);
 	return (
 		<section className="Member paddingDefualt ">
-			<Loading active={!data ? true : false} />
 			<div className="ListGroupWrapper">
 				{data &&
 					data.map((el, index) => {

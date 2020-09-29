@@ -5,11 +5,15 @@ const FormTag = ({ text, onClick }) => {
 	return (
 		<div className="FormTag">
 			<div className="wrapper-contents">
-				{typeof texxt === "string" ? (
+				{typeof text === "string" ? (
 					<p>{text}</p>
 				) : (
 					Object.keys(text).map((key, index) => {
-						return <p key={index}>{text[key]}</p>;
+						return (
+							<p key={index} className="option">
+								{text[key]}
+							</p>
+						);
 					})
 				)}
 			</div>

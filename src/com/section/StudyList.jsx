@@ -5,6 +5,7 @@ import StudylistDefault from "../component/StudylistDefault";
 
 const StudyList = ({ data, title }) => {
 	const { scrollDir } = useContext(AppContext);
+	// console.log(data);
 	return (
 		<div className="MemberList ListWrapperDefault">
 			<div className={`con ListDividerWrapper ${scrollDir === "up" ? "down" : ""}`}>

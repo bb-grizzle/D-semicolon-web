@@ -1,32 +1,33 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
 // section
 import { HomeCover, HomeOverview, HomeMember, HomeContact } from "com/section";
-import Loading from "../component/Loading";
 import { useMember, useContactMember } from "../../Data/member";
+import { AppContext } from "../../shared/App";
 export const HomeContext = createContext();
 
 const Home = () => {
-	const [loading, setLoading] = useState(true);
 	const { data } = useMember();
 	const { data: contactData } = useContactMember();
+	const { setLoading } = useContext(AppContext);
 
 	useEffect(() => {
 		if (data && contactData) {
 			setLoading(false);
+		} else {
+			setLoading(true);
 		}
-	}, [contactData, data]);
+	}, [contactData, data, setLoading]);
 
 	return (
 		<div className="Home">
-			<Loading active={loading} />
 			{data && contactData && (
-				<HomeContext.Provider value={{ setLoading }}>
+				<div>
 					<HomeCover />
 					<HomeOverview />
 					<HomeMember data={data[0]} />
 					<HomeContact data={contactData} />
-				</HomeContext.Provider>
+				</div>
 			)}
 		</div>
 	);

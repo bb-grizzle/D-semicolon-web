@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SectionTitle from "../../component/SectionTitle";
 import ListAdmin from "../../component/admin/ListAdmin";
 import AdminForm from "../../component/admin/AdminForm";
@@ -10,6 +10,7 @@ import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import useDropdownInput from "../../../Hooks/useDropdownInput";
 import SubTitle from "../../component/SubTitle";
 import { BASIC_CATEGORY, useStudy } from "../../../Data/study";
+import { AppContext } from "../../../shared/App";
 const COL = "study";
 
 const Study = () => {
@@ -22,12 +23,21 @@ const Study = () => {
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
 	const [nowData, setNowData] = useState();
+	const { setLoading } = useContext(AppContext);
 
 	useEffect(() => {
 		if (options) {
 			categoryInput.setOption(options);
 		}
 	}, [categoryInput, options]);
+
+	useEffect(() => {
+		if (data && options) {
+			setLoading(false);
+		} else {
+			setLoading(true);
+		}
+	}, [data, options, setLoading]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -61,9 +71,20 @@ const Study = () => {
 					...uploadData,
 					file
 				};
-				// 데이터 업데이트
+				// 데이터 업로드
 				await fbUpdateData(COL, id, newData);
-				setData((n) => ({ ...n, [newData.category]: [{ ...newData, id }, ...n[newData.category]] }));
+				// uploadData.category
+				setData((n) =>
+					n[uploadData.category]
+						? {
+								...n,
+								[uploadData.category]: [{ ...newData, id }, ...n[uploadData.category]]
+						  }
+						: {
+								...n,
+								[uploadData.category]: [{ ...newData, id }]
+						  }
+				);
 				alert("성공적으로 업로드 했어요 😆");
 			} else if (nowAction === "EDIT") {
 				if (!fileInput.value.file) {
@@ -182,16 +203,9 @@ const Study = () => {
 						<div className="filter-wrapper" key={el}>
 							<SubTitle title={el} />
 							<ul className="ListAdmin-wrapper">
-								{data[el].map((el) => {
+								{data[el].map((d) => {
 									return (
-										<ListAdmin
-											id={el.id}
-											onClick={() => handleListClick(el)}
-											onDeleteClick={handleDeleteClick}
-											key={el.id}
-											title={el.title}
-											contents={[{ keyValue: "category", value: el.category }]}
-										/>
+										<ListAdmin id={d.id} onClick={() => handleListClick(d)} onDeleteClick={handleDeleteClick} key={d.id} title={d.title} contents={[{ keyValue: "category", value: d.category }]} />
 									);
 								})}
 							</ul>
@@ -208,7 +222,16 @@ const Study = () => {
 							<SubTitle title={key} />
 							<ul className="ListAdmin-wrapper">
 								{data[key].map((el) => {
-									return <ListAdmin id={el.id} onClick={handleListClick} onDeleteClick={handleDeleteClick} key={el.id} title={el.title} contents={[{ keyValue: "category", value: el.category }]} />;
+									return (
+										<ListAdmin
+											id={el.id}
+											onClick={() => handleListClick(el)}
+											onDeleteClick={handleDeleteClick}
+											key={el.id}
+											title={el.title}
+											contents={[{ keyValue: "category", value: el.category }]}
+										/>
+									);
 								})}
 							</ul>
 						</div>

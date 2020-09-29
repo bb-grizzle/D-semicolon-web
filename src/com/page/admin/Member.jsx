@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import SectionTitle from "../../component/SectionTitle";
 import AdminFLoatingBtn from "../../component/admin/AdminFLoatingBtn";
 import AdminForm from "../../component/admin/AdminForm";
@@ -12,6 +12,7 @@ import ListAdmin from "../../component/admin/ListAdmin";
 import SubTitle from "../../component/SubTitle";
 import { makeCount, checkObjectContain } from "../../../fn/default";
 import useCheckInput from "../../../Hooks/useCheckInput";
+import { AppContext } from "../../../shared/App";
 const COL = "member";
 
 const Member = () => {
@@ -35,6 +36,14 @@ const Member = () => {
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
 	const { data, setData } = useMember();
+	const { setLoading } = useContext(AppContext);
+	useEffect(() => {
+		if (data) {
+			setLoading(false);
+		} else {
+			setLoading(true);
+		}
+	}, [data, setLoading]);
 
 	useEffect(() => {
 		setForm({

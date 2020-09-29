@@ -35,7 +35,7 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 								return (
 									<div className="wrapper-formTag inputItem" key={index}>
 										{el.value.map((text, i) => (
-											<FormTag key={i} text={text} onClick={() => el.onClick(index)} />
+											<FormTag key={i} text={text} onClick={() => el.onClick(i)} />
 										))}
 									</div>
 								);

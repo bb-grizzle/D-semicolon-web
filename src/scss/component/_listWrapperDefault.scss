@@ -1,6 +1,4 @@
 .ListGroupWrapper {
-
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -8,7 +6,6 @@
 }
 
 .ListDividerWrapper {
-
   @include screen-md {
     max-width: 100%;
     padding: 1rem 5%;
@@ -23,6 +20,12 @@
 
     &.down {
       top: $height-headerLogo-pc;
+
+      &::after {
+
+        transform: translateX(5%);
+        width: 90%;
+      }
     }
 
     &::after {
@@ -30,8 +33,9 @@
       display: block;
       position: absolute;
       left: 0%;
-      bottom: 0;
+      transform: translateX(0%);
       width: 100%;
+      bottom: 0;
       border-bottom: 1px solid $color-main;
       transition: $transition-default;
     }
