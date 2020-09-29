@@ -24,5 +24,5 @@
   - [x] animation
   - [x] favicon
   - [x] og tag
-  - [ ] Can't perform a React state update on an unmounted component. issue
   - [x] add data
+  - [ ] Can't perform a React state update on an unmounted component. issue

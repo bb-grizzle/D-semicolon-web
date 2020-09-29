@@ -19,6 +19,7 @@ import img_15 from "image/intro/intro_15.png";
 import img_16 from "image/intro/intro_16.png";
 import semi_w from "image/icon/semicolon_w.svg";
 import semi_b from "image/icon/semicolon_b.svg";
+import { useInterval } from "../../Hooks/useInterval";
 
 const intro_arr = [img_01, img_02, img_03, img_04, img_05, img_06, img_07, img_08, img_09, img_10, img_11, img_12, img_13, img_14, img_15, img_16];
 
@@ -26,27 +27,23 @@ const HomeCover = () => {
 	const [introImage, setIntroImage] = useState(0);
 	const [semi, setSemi] = useState(0);
 
+	const makeRandomImage = () => {
+		const rand = Math.floor(Math.random() * intro_arr.length);
+		setIntroImage(rand);
+
+		let randSemi = false;
+		if (rand % 2) {
+			randSemi = false;
+		} else {
+			randSemi = true;
+		}
+		setSemi(randSemi);
+	};
+
+	useInterval(makeRandomImage, 500);
+
 	useEffect(() => {
-		const makeRandomImage = () => {
-			const rand = Math.floor(Math.random() * intro_arr.length);
-			setIntroImage(rand);
-
-			let randSemi = false;
-			if (rand % 2) {
-				randSemi = false;
-			} else {
-				randSemi = true;
-			}
-			setSemi(randSemi);
-		};
-
-		const handleImageRandom = () => {
-			setInterval(() => {
-				makeRandomImage();
-			}, 500);
-		};
 		makeRandomImage();
-		handleImageRandom();
 	}, []);
 
 	return (

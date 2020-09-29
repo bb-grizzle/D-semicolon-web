@@ -5,7 +5,7 @@ import { AppContext } from "../../shared/App";
 import PageAnimation from "../component/PageAnimation";
 
 const Member = () => {
-	const { data } = useMember();
+	const { data, setData } = useMember();
 	const { setLoading } = useContext(AppContext);
 
 	useEffect(() => {
@@ -15,6 +15,12 @@ const Member = () => {
 			setLoading(true);
 		}
 	}, [data, setLoading]);
+	useEffect(() => {
+		return () => {
+			setData(null);
+		};
+	}, [setData]);
+
 	return (
 		<section className="Member paddingDefualt ">
 			<PageAnimation>

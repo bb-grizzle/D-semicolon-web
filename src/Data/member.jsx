@@ -6,6 +6,7 @@ export const LINK_KEY_INITIAL = ["web", "behance", "instagram", "facebook", "git
 
 export const useMember = () => {
 	const [data, setData] = useState();
+
 	useEffect(() => {
 		const get = async () => {
 			const res = await fbGetData(COL, "grade", "desc");
@@ -15,7 +16,14 @@ export const useMember = () => {
 			});
 			setData(arrayReverseObj(filtered));
 		};
-		get();
+
+		let mounted = true;
+		if (mounted) {
+			get();
+		}
+		return () => {
+			mounted = false;
+		};
 	}, []);
 
 	return { data, setData };
@@ -29,7 +37,12 @@ export const useContactMember = () => {
 			const filter = res.filter((el) => el.isContact === true);
 			setData(filter);
 		};
-		get();
+
+		let mounted = true;
+		if (mounted) {
+			get();
+		}
+		return () => (mounted = false);
 	}, []);
 
 	return { data, setData };

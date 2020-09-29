@@ -18,7 +18,12 @@ export const useStudy = () => {
 				console.log(err);
 			}
 		};
-		getData();
+
+		let mounted = true;
+		if (mounted) {
+			getData();
+		}
+		return () => (mounted = false);
 	}, []);
 
 	useEffect(() => {
@@ -30,7 +35,12 @@ export const useStudy = () => {
 				console.log(err);
 			}
 		};
-		getOptions();
+
+		let mounted = true;
+		if (mounted) {
+			getOptions();
+		}
+		return () => (mounted = false);
 	}, []);
 
 	useEffect(() => {
