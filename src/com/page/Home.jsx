@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect } from "react";
 import { HomeCover, HomeOverview, HomeMember, HomeContact } from "com/section";
 import { useMember, useContactMember } from "../../Data/member";
 import { AppContext } from "../../shared/App";
+import PageAnimation from "../component/PageAnimation";
 export const HomeContext = createContext();
 
 const Home = () => {
@@ -22,12 +23,12 @@ const Home = () => {
 	return (
 		<div className="Home">
 			{data && contactData && (
-				<div>
+				<PageAnimation>
 					<HomeCover />
 					<HomeOverview />
 					<HomeMember data={data[0]} />
 					<HomeContact data={contactData} />
-				</div>
+				</PageAnimation>
 			)}
 		</div>
 	);
