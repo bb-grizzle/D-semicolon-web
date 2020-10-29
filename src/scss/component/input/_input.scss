@@ -78,6 +78,7 @@
         border: none;
         background-color: white;
         border-right: 1px solid black;
+        width: 120px;
       }
 
 
@@ -110,23 +111,28 @@
     }
   }
 
-  &.InputCheck{
-    .label-checkbox{
+  &.InputCheck {
+    .text {
+      @include inputStyle;
+    }
+
+    .label-checkbox {
       display: block;
       border: 1px solid black;
-      
+      cursor: pointer;
       color: black;
-      &.active{
+
+      &.active {
         background-color: black;
         color: white;
-        
       }
-      
-      p{
+
+      p {
         width: 100%;
         @include inputStyle;
       }
-      input{
+
+      input {
         display: none;
       }
     }

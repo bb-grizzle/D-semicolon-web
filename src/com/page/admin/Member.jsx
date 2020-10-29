@@ -10,7 +10,7 @@ import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
 import { fbUpdateData, fbUploadData, fbUploadStorage, fbDeleteStorage, fbDeleteData, fbUpdateStorage } from "../../../Firebase/firebase";
 import ListAdmin from "../../component/admin/ListAdmin";
 import SubTitle from "../../component/SubTitle";
-import { makeCount, checkObjectContain } from "../../../fn/default";
+import { makeCount } from "../../../fn/default";
 import useCheckInput from "../../../Hooks/useCheckInput";
 import { AppContext } from "../../../shared/App";
 const COL = "member";
@@ -65,6 +65,7 @@ const Member = () => {
 		}
 
 		try {
+			setLoading(true);
 			// UPLOAD
 			if (nowAction === "ADD") {
 				const id = await fbUploadData(COL, form);
@@ -84,17 +85,9 @@ const Member = () => {
 				const newData = { ...form, profile, id };
 
 				setData((n) =>
-					checkObjectContain(n, { grade: `${form.grade}` })
-						? n.map((d) => {
-								return {
-									...d,
-									data: [newData, ...d.data]
-								};
-						  })
-						: n.concat({
-								grade: `${form.grade}`,
-								data: [newData]
-						  })
+					n.map((el) => {
+						return +el.grade === form.grade ? { ...el, data: [newData, ...el.data] } : el;
+					})
 				);
 
 				alert("성공적으로 업로드 했어요 😆");
@@ -124,13 +117,17 @@ const Member = () => {
 		linkInput.init();
 	};
 
+	const handleLinkDeleteClick = (i) => {
+		setContact((prev) => prev.filter((contact, index) => index !== i));
+	};
+
 	const formContents = [
 		{ ...firstNameInput, label: "first name" },
 		{ ...lastNameInput, label: "last name" },
 		{ ...emailInput, label: "email", inputType: "email" },
 		{ ...tellInput, label: "tell", maxLength: 13 },
-		{ ...linkInput, label: "link", type: "key-value", onClick: handleLinkAddClick },
-		{ value: contact, type: "text-array" },
+		{ ...linkInput, label: "link", type: "key-value", onClick: handleLinkAddClick, placeholder: "https:// -- 까지 모두 입력해주세요 :)" },
+		{ value: contact, type: "text-array", onClick: handleLinkDeleteClick },
 		{ ...profileInput, label: "profile", type: "file", thumbnail: true },
 		{ ...gradeInput, label: "grade", inputType: "number" },
 		{ ...isContactInput, label: "isContact", type: "check", text: "Contact에 포함시킬거라면 체크하세요." }
@@ -147,6 +144,7 @@ const Member = () => {
 		setContact([]);
 		setNowAction(null);
 		setNowData(null);
+		setLoading(false);
 	};
 
 	const handleListClick = (data) => {
@@ -214,6 +212,7 @@ const Member = () => {
 			console.log(err);
 		}
 	};
+
 	return (
 		<div>
 			<SectionTitle title="Member" />

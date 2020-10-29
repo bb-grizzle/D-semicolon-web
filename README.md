@@ -25,4 +25,7 @@
   - [x] favicon
   - [x] og tag
   - [x] add data
+  - [x] upload memeber issue
+  - [x] member | delete link
+  - [x] loading when member upload
   - [ ] Can't perform a React state update on an unmounted component. issue
