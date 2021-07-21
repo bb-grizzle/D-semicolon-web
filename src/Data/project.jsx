@@ -44,6 +44,7 @@ export const useProject = (order, desc) => {
 	};
 
 	const uploadProject = async (data, image) => {
+		console.log(image);
 		try {
 			// 01. check tag
 			checkTag(data.tag);
@@ -58,7 +59,7 @@ export const useProject = (order, desc) => {
 			await fbUpdateData(COL, id, { ...data, thumbnail: fileUPload });
 
 			// 05. update state
-			const newProject = { ...data, thumbnail: fileUPload, user: findeUserById(data.userId), id };
+			const newProject = { ...data, thumbnail: { ...fileUPload, url: image.url }, user: findeUserById(data.userId), id };
 			setData((prev) => [newProject, ...(prev || [])]);
 
 			return true;

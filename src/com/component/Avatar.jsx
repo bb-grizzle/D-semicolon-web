@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { PlaceholderProfile } from "../../image/svg";
-let img = null;
+
 const Avatar = ({ url, className }) => {
 	const [active, setActive] = useState(false);
 
 	useEffect(() => {
 		return () => {
 			setActive(false);
-			img.onload = null;
 		};
 	}, []);
 
 	useEffect(() => {
 		if (url) {
-			img = new Image();
-			img.src = url;
+			const dom = document.createElement("img");
+			dom.src = url;
 
-			img.onload = () => {
+			dom.onload = () => {
 				setActive(true);
 			};
 		} else {

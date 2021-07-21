@@ -35,6 +35,10 @@
 				}
 			}
 
+			.tags {
+				opacity: 0;
+			}
+
 			&:after {
 				opacity: 1;
 			}
@@ -85,9 +89,14 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column;
-		transform: translateY(100%) translateY(-$size_title) translateY(-$info_padding);
+		// transform: translateY(100%) translateY(-$size_title) translateY(-$info_padding);
+		transform: translateY(100%);
 		transition: $transition-default;
-		// background-color: $color-white;
+
+		// border-top: 1px solid $color-main;
+		// background-color: $color-gray-light;
+		// backdrop-filter: blur(16px);
+		// background-color: rgba(255, 255, 255, 0.5);
 
 		&:after {
 			content: "";
@@ -108,10 +117,11 @@
 	.tags {
 		position: absolute;
 		width: 100%;
-		top: 0;
+		bottom: 0;
 		padding: $info_padding;
 		display: flex;
 		flex-wrap: wrap;
+		transition: $transition-default;
 
 		.tag-list {
 			margin-right: 8px;
@@ -130,6 +140,7 @@
 		@include h3;
 		.title-text {
 			position: relative;
+			// color: $color-white;
 		}
 		height: $size_title;
 		.Avatar {

@@ -123,8 +123,8 @@ const Project = () => {
 	};
 
 	const formContents = [
-		{ ...titleInput, label: "title", maxLength: 30 },
-		{ ...textInput, label: "text", maxLength: 100 },
+		{ ...titleInput, label: "title", maxLength: 50 },
+		{ ...textInput, label: "text", maxLength: 150 },
 		{ ...urlInput, label: "url", type: "url" },
 		{ ...thumbnailInput, label: "thumbnail", type: "file", thumbnail: true },
 		{ ...tagInput, label: "tag", type: "tag", onClick: handleContentsClick, onTagClick: handleTagClick, tags },
