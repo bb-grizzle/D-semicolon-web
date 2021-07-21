@@ -15,6 +15,7 @@ import { fullHeight, preventScroll, activeScroll } from "../fn/default";
 import AdminProvider from "../com/context/AdminProvider";
 import MetaLayout from "../com/MetaLayout";
 import Loading from "../com/component/Loading";
+import { initAnalyticsFirebase } from "../Firebase/firebase";
 
 // context
 export const AppContext = createContext();
@@ -31,7 +32,9 @@ function App() {
 
 	useEffect(() => {
 		fullHeight();
+		initAnalyticsFirebase();
 	}, []);
+
 	useEffect(() => {
 		listen(() => {
 			window.scrollTo(0, 0);

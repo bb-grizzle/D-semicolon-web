@@ -4,11 +4,17 @@ import firebaseConfig from "./config.js";
 import "firebase/firestore";
 import "firebase/storage";
 import "firebase/auth";
+import "firebase/analytics";
 
 firebase.initializeApp(firebaseConfig);
+
 const db = firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth();
+
+export const initAnalyticsFirebase = () => {
+	firebase.analytics();
+};
 
 export const fbAuthListener = (cal) => {
 	auth.onAuthStateChanged((user) => {
@@ -47,7 +53,7 @@ export const fbDataSetting = async () => {
 	console.log("- fbDataSetting -");
 	try {
 		await db.settings({
-			cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
+			cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED,
 		});
 		await db.enablePersistence();
 	} catch (err) {
@@ -81,7 +87,7 @@ export const fbGetData = async (col, order, desc) => {
 		arr.forEach((doc) => {
 			const obj = {
 				...doc.data(),
-				id: doc.id
+				id: doc.id,
 			};
 			result.push(obj);
 		});
@@ -94,10 +100,7 @@ export const fbGetData = async (col, order, desc) => {
 
 export const fbGetDataById = async (col, doc) => {
 	try {
-		const ref = await db
-			.collection(col)
-			.doc(doc)
-			.get();
+		const ref = await db.collection(col).doc(doc).get();
 
 		if (ref.exists) {
 			return ref.data();
@@ -113,7 +116,7 @@ export const fbUploadData = async (col, data) => {
 	try {
 		const upload = await db.collection(col).add({
 			...data,
-			timeStamp: firebase.firestore.FieldValue.serverTimestamp()
+			timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
 		});
 		const id = await upload.id;
 		console.log("upload is complete");
@@ -130,7 +133,7 @@ export const fbUploadDataWithDoc = async (col, doc, data) => {
 			.doc(doc)
 			.set({
 				...data,
-				timeStamp: firebase.firestore.FieldValue.serverTimestamp()
+				timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
 			});
 		console.log("upload is complete");
 	} catch (err) {
@@ -150,10 +153,7 @@ export const fbUpdateData = async (col, id, data) => {
 
 export const fbDeleteData = async (col, doc) => {
 	try {
-		await db
-			.collection(col)
-			.doc(doc)
-			.delete();
+		await db.collection(col).doc(doc).delete();
 		console.log("delete data is complete");
 	} catch (err) {
 		console.log(err);
@@ -169,11 +169,11 @@ export const fbUploadStorage = async (path, name, file) => {
 		await ref.put(file);
 		const url = await ref.getDownloadURL();
 		const prevUrl = `${path}/${name}`;
-		const fileName = file.name
+		const fileName = file.name;
 		return {
 			url,
 			prevUrl,
-			fileName
+			fileName,
 		};
 	} catch (err) {
 		console.log(err);
