@@ -1,167 +1,157 @@
-// - MEDIA QUERY - 
+// - MEDIA QUERY -
 $screen-xl-min: 1200px;
 $screen-lg-min: 992px;
 $screen-md-min: 768px;
 $screen-sm-min: 576px;
 
 @mixin screen-xl {
-
-  // full size screen
-  @media screen and (min-width: $screen-xl-min) {
-    @content;
-  }
+	// full size screen
+	@media screen and (min-width: $screen-xl-min) {
+		@content;
+	}
 }
 
 @mixin screen-lg {
-  @media screen and (max-width: $screen-xl-min) {
-    @content;
-  }
+	@media screen and (max-width: $screen-xl-min) {
+		@content;
+	}
 }
 
 @mixin screen-lg-portrait {
-  @media screen and (max-width: $screen-xl-min) and (orientation: portrait) {
-    @content;
-  }
+	@media screen and (max-width: $screen-xl-min) and (orientation: portrait) {
+		@content;
+	}
 }
 
 @mixin screen-md {
-
-  //  and (hover: none) and (pointer: coarse)
-  @media screen and (max-width: $screen-lg-min) {
-    @content;
-  }
+	//  and (hover: none) and (pointer: coarse)
+	@media screen and (max-width: $screen-lg-min) {
+		@content;
+	}
 }
 
 @mixin screen-md-portrait {
-
-  //  and (hover: none) and (pointer: coarse)
-  @media screen and (max-width: $screen-lg-min) and (orientation: portrait) {
-    @content;
-  }
+	//  and (hover: none) and (pointer: coarse)
+	@media screen and (max-width: $screen-lg-min) and (orientation: portrait) {
+		@content;
+	}
 }
 
-
 @mixin screen-sm {
-
-  //  and (hover: none) and (pointer: coarse)
-  @media screen and (max-width: $screen-md-min) {
-    @content;
-  }
+	//  and (hover: none) and (pointer: coarse)
+	@media screen and (max-width: $screen-md-min) {
+		@content;
+	}
 }
 
 @mixin touchscreen {
-  @media (hover: none) and (pointer: coarse) {
-    @content;
-  }
+	@media (hover: none) and (pointer: coarse) {
+		@content;
+	}
 }
 
 @mixin pcscreen {
-  @media (hover: hover) and (pointer: coarse) {
-    @content;
-  }
+	@media (hover: hover) and (pointer: coarse) {
+		@content;
+	}
 }
 
-// - LAYOUT - 
+// - LAYOUT -
 $col-count-pc: 12;
 $gutter-pc: 16px;
-$col-width-pc : calc(100% - #{$gutter-pc * ($col-count-pc - 1)} / #{$col-count-pc});
+$col-width-pc: calc(100% - #{$gutter-pc * ($col-count-pc - 1)} / #{$col-count-pc});
 
-
-
-// - COLOR - 
+// - COLOR -
 $color-main: #000000;
 $color-gray-default: #808080;
-$color-gray-light: #F8F8F8;
+$color-gray-light: #f8f8f8;
 $color-white: #ffffff;
 
-
-// - FONT - 
+// - FONT -
 @font-face {
-  font-family: bodoni-bold;
-  src: url(../font/BodoniStd-Bold.otf);
+	font-family: bodoni-bold;
+	src: url(../font/BodoniStd-Bold.otf);
 }
 
 @font-face {
-  font-family: bodoni-book;
-  src: url(../font/BodoniStd-Book.otf);
+	font-family: bodoni-book;
+	src: url(../font/BodoniStd-Book.otf);
 }
-
 
 @mixin h1 {
-  font-family: bodoni-bold;
-  font-size: 40px;
+	font-family: bodoni-bold;
+	font-size: 40px;
 
-  @include screen-md {
-    font-size: 20px;
-  }
+	@include screen-md {
+		font-size: 20px;
+	}
 }
 
 @mixin h2 {
-  font-family: bodoni-book;
-  font-size: 24px;
+	font-family: bodoni-book;
+	font-size: 24px;
 
-  @include screen-md {
-    font-size: 20px
-  }
+	@include screen-md {
+		font-size: 20px;
+	}
 }
 
 @mixin h3 {
-  font-weight: 700;
-  font-size: 24px;
+	font-weight: 700;
+	font-size: 24px;
 
-  @include screen-md {
-    font-size: 18px;
-  }
+	@include screen-md {
+		font-size: 18px;
+	}
 }
 
 @mixin gnb-active {
-  font-family: bodoni-book;
-  font-size: 20px;
-  color: $color-main;
+	font-family: bodoni-book;
+	font-size: 20px;
+	color: $color-main;
 
-  @include screen-md {
-    font-size: 16px;
-  }
+	@include screen-md {
+		font-size: 16px;
+	}
 }
 
 @mixin gnb-default {
-  font-family: bodoni-book;
-  font-size: 20px;
-  color: $color-gray-default;
+	font-family: bodoni-book;
+	font-size: 20px;
+	color: $color-gray-default;
 
-  @include screen-md {
-    font-size: 16px;
-  }
+	@include screen-md {
+		font-size: 16px;
+	}
 }
 
 @mixin gnb-menu {
-  font-family: bodoni-book;
-  font-size: 24px;
-  text-transform: capitalize;
+	font-family: bodoni-book;
+	font-size: 24px;
+	text-transform: capitalize;
 
-  a {
-    color: $color-white;
-  }
+	a {
+		color: $color-white;
+	}
 }
 
 @mixin p-default {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.875rem;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.875rem;
 }
 
 @mixin p-bold {
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.875rem;
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.875rem;
 }
 
 @mixin caption {
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: 300i;
+	font-size: 1rem;
+	font-style: italic;
+	font-weight: 300i;
 }
-
 
 // - SIZE -
 $height-full: calc(var(--vh, 1vh) * 100);
@@ -170,12 +160,12 @@ $size-offset-pc: 16px;
 $size-offset-mobile: 8px;
 $height-headerLogo-pc: 80px;
 $height-headerLogo-mobile: 60px;
-$size-contactlist-avatar-pc:72px;
-$size-contactlist-avatar-mobile:48px;
+$size-contactlist-avatar-pc: 72px;
+$size-contactlist-avatar-mobile: 48px;
 
-// - TRANSITION - 
-$transition-default: all .3s ease-in-out;
-$transition-list: all .1s ease-in-out;
+// - TRANSITION -
+$transition-default: all 0.3s cubic-bezier(0.85, 0, 0.07, 1.05);
+$transition-list: all 0.1s ease-in-out;
 
 // - ZINDEX
 $z-header: 100;

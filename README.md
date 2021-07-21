@@ -15,7 +15,7 @@
   - [x] contact
     - [x] add
     - [x] delete]
-  - [ ] project
+  - [x] project
     - [x] add
     - [x] edit
     - [x] delete

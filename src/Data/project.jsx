@@ -27,7 +27,9 @@ export const useProject = (order, desc) => {
 
 	const getTag = async () => {
 		const res = await fbGetDataById(COL, TAGS);
-		setTags(res.tag);
+		if (res) {
+			setTags(res.tag);
+		}
 	};
 
 	const checkTag = async (tag) => {

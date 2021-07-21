@@ -1,7 +1,7 @@
 import React from "react";
 import ListAdmin from "../component/admin/ListAdmin";
 
-const ProjectList = ({ data, onDeleteClick, onClick }) => {
+const ProjectAdminList = ({ data, onDeleteClick, onClick }) => {
 	return data ? (
 		<ul className={"admin-project ListAdmin-wrapper"}>
 			{data.map((el) => {
@@ -21,4 +21,4 @@ const ProjectList = ({ data, onDeleteClick, onClick }) => {
 	) : null;
 };
 
-export default ProjectList;
+export default ProjectAdminList;

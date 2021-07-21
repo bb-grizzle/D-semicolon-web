@@ -15,6 +15,7 @@ const Member = () => {
 			setLoading(true);
 		}
 	}, [data, setLoading]);
+
 	useEffect(() => {
 		return () => {
 			setData(null);
@@ -24,7 +25,7 @@ const Member = () => {
 	return (
 		<section className="Member paddingDefualt ">
 			<PageAnimation>
-				<div className="ListGroupWrapper">
+				<div className="ListGroupWrapper con">
 					{data &&
 						data.map((el, index) => {
 							return <MemberList data={el} key={index} />;

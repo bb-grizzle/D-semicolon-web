@@ -7,7 +7,7 @@ import AdminFLoatingBtn from "../../component/admin/AdminFLoatingBtn";
 import AdminForm from "../../component/admin/AdminForm";
 import SectionTitle from "../../component/SectionTitle";
 import { useNowAction, useSetNowAction } from "../../context/AdminProvider";
-import ProjectList from "../../section/ProjectList";
+import ProjectList from "../../section/ProjectAdminList";
 const Project = () => {
 	const titleInput = useInput("");
 	const tagInput = useInput("");
@@ -15,6 +15,8 @@ const Project = () => {
 	const urlInput = useInput("");
 	const [tagArr, setTagArr] = useState([]);
 	const userIdInput = useInput("");
+	const textInput = useInput("");
+
 	const [form, setForm] = useState();
 	const nowAction = useNowAction();
 	const setNowAction = useSetNowAction();
@@ -28,9 +30,10 @@ const Project = () => {
 			title: titleInput.value,
 			url: urlInput.value,
 			tag: tagArr,
+			text: textInput.value,
 			userId: userIdInput.value,
 		});
-	}, [titleInput.value, urlInput.value, tagArr, userIdInput.value]);
+	}, [titleInput.value, urlInput.value, tagArr, userIdInput.value, textInput.value]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -58,6 +61,7 @@ const Project = () => {
 			}
 		}
 
+		initForm();
 		setLoading(false);
 		setNowAction(null);
 	};
@@ -66,6 +70,7 @@ const Project = () => {
 		titleInput.setValue("");
 		tagInput.setValue("");
 		thumbnailInput.initFile();
+		textInput.setValue("");
 		urlInput.setValue("");
 		setTagArr([]);
 		userIdInput.setValue("");
@@ -90,11 +95,12 @@ const Project = () => {
 	const onListClick = (data) => {
 		setNowAction("EDIT");
 		setNowData(data);
-		const { tag, thumbnail, title, url, userId } = data;
+		const { tag, thumbnail, title, url, userId, text } = data;
 
 		titleInput.setValue(title);
 		urlInput.setValue(url);
-		tagInput.setValue(tag);
+		setTagArr(tag);
+		textInput.setValue(text);
 		userIdInput.setValue(userId);
 		thumbnailInput.setValue((prev) => {
 			return { ...prev, fileName: thumbnail.fileName, url: thumbnail.url, prevUrl: thumbnail.prevUrl };
@@ -117,7 +123,8 @@ const Project = () => {
 	};
 
 	const formContents = [
-		{ ...titleInput, label: "title" },
+		{ ...titleInput, label: "title", maxLength: 30 },
+		{ ...textInput, label: "text", maxLength: 100 },
 		{ ...urlInput, label: "url", type: "url" },
 		{ ...thumbnailInput, label: "thumbnail", type: "file", thumbnail: true },
 		{ ...tagInput, label: "tag", type: "tag", onClick: handleContentsClick, onTagClick: handleTagClick, tags },

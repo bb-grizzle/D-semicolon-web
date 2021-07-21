@@ -173,10 +173,8 @@ body {
 
 // transition
 @mixin transition-default {
-	transition: all 0.3s ease-in-out;
+	transition: $transition-default;
 }
-
-$transition-default: all 0.3s ease-in-out;
 
 @mixin inputStyle {
 	padding: 10px 12px;

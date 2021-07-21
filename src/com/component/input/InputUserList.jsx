@@ -5,11 +5,13 @@ import Avatar from "../Avatar";
 const InputUserList = ({ label, value, setValue }) => {
 	const { origin } = useMember();
 	const [isDropdownClicked, setIsDropdownClicked] = useState(false);
-	const [nowUser, setNowUser] = useState();
+	const [nowUser, setNowUser] = useState(null);
 
 	useEffect(() => {
 		if (origin && value) {
 			setNowUser(origin.find((el) => el.id === value));
+		} else {
+			setNowUser(null);
 		}
 	}, [value, origin]);
 
