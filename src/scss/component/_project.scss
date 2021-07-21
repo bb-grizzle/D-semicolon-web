@@ -19,8 +19,11 @@
 	.project-list {
 		position: relative;
 		cursor: pointer;
+		box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+		transition: $transition-default;
 
 		&:hover {
+			box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
 			.info {
 				transform: inherit;
 				background-color: transparent;

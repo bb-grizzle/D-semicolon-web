@@ -26,14 +26,16 @@ const Project = () => {
 	return (
 		<section className="Project paddingDefualt">
 			<PageAnimation>
-				<div className="project-wrapper con ListWrapperDefault">
-					{data && data[0] ? (
-						data.map((el) => {
-							return <ProjectList key={el.id} data={el} />;
-						})
-					) : (
-						<p>project is empty</p>
-					)}
+				<div className="ListWrapperDefault">
+					<div className="project-wrapper con">
+						{data && data[0] ? (
+							data.map((el) => {
+								return <ProjectList key={el.id} data={el} />;
+							})
+						) : (
+							<p>project is empty</p>
+						)}
+					</div>
 				</div>
 			</PageAnimation>
 		</section>
