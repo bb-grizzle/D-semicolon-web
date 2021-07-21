@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fbDeleteData, fbDeleteStorage, fbGetData, fbGetDataById, fbUpdateData, fbUpdateStorage, fbUploadData, fbUploadDataWithDoc, fbUploadStorage } from "../Firebase/firebase";
+import { fbDeleteData, fbDeleteStorage, fbGetData, fbGetDataById, fbUpdateData, fbUploadData, fbUploadDataWithDoc, fbUploadStorage } from "../Firebase/firebase";
 import { useMember } from "./member";
 
 const COL = "project";
@@ -16,19 +16,18 @@ export const useProject = (order, desc) => {
 
 	useEffect(() => {
 		if (origin) {
+			const getProject = async () => {
+				const res = await fbGetData(COL, order || "timeStamp", desc || "desc");
+				const filteredData = res.filter((el) => el.id !== "tags").map((el) => ({ ...el, user: origin.find((user) => user.id === el.userId) }));
+				setData(filteredData);
+			};
 			getProject();
 		}
-	}, [origin]);
+	}, [origin, order, desc]);
 
 	const getTag = async () => {
 		const res = await fbGetDataById(COL, TAGS);
 		setTags(res.tag);
-	};
-
-	const getProject = async () => {
-		const res = await fbGetData(COL, order || "timeStamp", desc || "desc");
-		const filteredData = res.filter((el) => el.id !== "tags").map((el) => ({ ...el, user: origin.find((user) => user.id === el.userId) }));
-		setData(filteredData);
 	};
 
 	const checkTag = async (tag) => {

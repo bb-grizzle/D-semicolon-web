@@ -1,6 +1,5 @@
 import InputDefault from "./InputDefault";
 import React, { useEffect, useState } from "react";
-import { useProject } from "../../../Data/project";
 
 const InputTag = ({ value, onChange, label, placeholder, type, onClick, maxLength, onTagClick, tags }) => {
 	const [relativeTags, setRalativeTags] = useState();
@@ -16,7 +15,7 @@ const InputTag = ({ value, onChange, label, placeholder, type, onClick, maxLengt
 
 	return (
 		<>
-			<InputDefault value={value} onChange={onChange} label={label} placeholder={placeholder} type={type} onClick={onClick} maxLength={maxLength} placeholder={label} maxLength={maxLength} />
+			<InputDefault value={value} onChange={onChange} label={label} placeholder={label} type={type} onClick={onClick} maxLength={maxLength} />
 			{relativeTags && (
 				<ul className="tag-wrapper">
 					{relativeTags.map((el) => (

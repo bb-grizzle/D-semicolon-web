@@ -26,7 +26,7 @@ export const useMember = (order, desc) => {
 		return () => {
 			mounted = false;
 		};
-	}, []);
+	}, [desc, order]);
 
 	return { data, setData, origin };
 };
