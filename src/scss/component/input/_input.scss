@@ -1,140 +1,200 @@
 .InputDefault {
+	.row {
+		display: flex;
+		align-items: center;
 
-  .row {
-    display: flex;
-    align-items: center;
+		.label {
+			text-transform: capitalize;
+			margin-bottom: 8px;
+		}
 
-    .label {
-      text-transform: capitalize;
-      margin-bottom: 8px;
+		.text-wrapper {
+			flex-grow: 1;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: white;
 
-    }
+			> input {
+				@include inputStyle;
+				flex-grow: 1;
+			}
+		}
 
-    .text-wrapper {
-      flex-grow: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
+		.Btnicon {
+			padding: 0 32px;
 
-      >input {
-        @include inputStyle;
-        flex-grow: 1;
-      }
+			p {
+				text-transform: uppercase;
+			}
+		}
+	}
 
-    }
+	&.InputFile,
+	&.InputFileWithImage {
+		.btn-file {
+			cursor: pointer;
+			width: 100%;
+			padding: 10px 6px;
+			background-color: #fff;
+			@include center-flex;
 
-    .Btnicon {
-      padding: 0 32px;
+			&:hover {
+				opacity: 0.5;
+			}
 
-      p {
-        text-transform: uppercase;
-      }
-    }
-  }
+			&.active {
+				padding-top: 30%;
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+		}
 
+		input {
+			display: none;
+		}
+	}
 
-  &.InputFile {
-    .btn-file {
-      cursor: pointer;
-      width: 100%;
-      padding: 10px 6px;
-      background-color: #fff;
-      @include center-flex;
+	&.InputFileWithImage {
+		.thumbnail {
+			width: 100%;
+			padding-top: 56.25%;
+			background-size: cover;
+			background-position: center;
+		}
+	}
 
+	&.InputKeyValue {
+		.dropdown-wrapper {
+			width: 100%;
+			display: flex;
 
-      &:hover {
-        opacity: 0.5;
-      }
+			.key,
+			.value {
+				@include inputStyle;
+			}
 
-      &.active {
-        padding-top: 30%;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+			.key {
+				outline: none;
+				border: none;
+				background-color: white;
+				border-right: 1px solid black;
+				width: 120px;
+			}
 
-      }
-    }
+			.text-wrapper {
+				display: flex;
+				flex-grow: 1;
+				justify-content: space-between;
+				align-items: center;
+				background-color: white;
 
-    input {
-      display: none;
-    }
-  }
+				.value {
+					width: 100%;
+				}
+			}
+		}
+	}
 
-  &.InputKeyValue {
+	&.InputDropdown {
+		.dropdown-wrapper {
+			width: 100%;
+			display: flex;
+			background-color: white;
+			align-items: center;
 
+			.dropdown {
+				@include inputStyle;
+				width: 100%;
+			}
+		}
+	}
 
-    .dropdown-wrapper {
-      width: 100%;
-      display: flex;
+	&.InputCheck {
+		.text {
+			@include inputStyle;
+		}
 
-      .key,
-      .value {
-        @include inputStyle
-      }
+		.label-checkbox {
+			display: block;
+			border: 1px solid black;
+			cursor: pointer;
+			color: black;
 
-      .key {
-        outline: none;
-        border: none;
-        background-color: white;
-        border-right: 1px solid black;
-        width: 120px;
-      }
+			&.active {
+				background-color: black;
+				color: white;
+			}
 
+			p {
+				width: 100%;
+				@include inputStyle;
+			}
 
-      .text-wrapper {
-        display: flex;
-        flex-grow: 1;
-        justify-content: space-between;
-        align-items: center;
-        background-color: white;
+			input {
+				display: none;
+			}
+		}
+	}
 
-        .value {
-          width: 100%;
-        }
-      }
-    }
-  }
+	&.InputUserList {
+		.userWrapper {
+			width: 100%;
+			opacity: 1;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+		.userSelector {
+			display: flex;
+			flex-direction: column;
+			background-color: $color-white;
+			align-items: flex-start;
+			width: 100%;
+			cursor: pointer;
+		}
 
-  &.InputDropdown {
-    .dropdown-wrapper {
-      width: 100%;
-      display: flex;
-      background-color: white;
-      align-items: center;
+		.placeholder {
+			@include inputStyle;
+			width: 100%;
+			color: $color-gray-default;
+			text-transform: capitalize;
+		}
 
-      .dropdown {
-        @include inputStyle;
-        width: 100%;
-      }
+		.user-list {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 8px 16px;
 
-    }
-  }
+			.user-info {
+				display: flex;
+				align-items: center;
+			}
+			.Avatar {
+				margin-right: 6px;
+				border: 1px solid $color-main;
+				width: 40px;
+				height: 40px;
+				border-radius: 999px;
+				svg {
+					height: 100%;
+				}
+			}
+		}
 
-  &.InputCheck {
-    .text {
-      @include inputStyle;
-    }
-
-    .label-checkbox {
-      display: block;
-      border: 1px solid black;
-      cursor: pointer;
-      color: black;
-
-      &.active {
-        background-color: black;
-        color: white;
-      }
-
-      p {
-        width: 100%;
-        @include inputStyle;
-      }
-
-      input {
-        display: none;
-      }
-    }
-  }
+		.userListWrapper {
+			width: 100%;
+			.user-list {
+				border-bottom: 1px solid $color-gray-light;
+				.user-info {
+					opacity: 0.3;
+					&.active {
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
 }

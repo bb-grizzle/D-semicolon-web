@@ -1,16 +1,18 @@
 .Btnicon {
-  @include center-flex;
-  position: relative;
-  width: 32px;
-  height: 32px;
-  opacity: 0.5;
-  cursor: pointer;
+	@include center-flex;
+	position: relative;
+	width: 32px;
+	height: 32px;
+	opacity: 1;
+	cursor: pointer;
 
+	&:hover {
+		opacity: 0.5;
+	}
 
-  @mixin pcscreen {
-    &:hover {
-      opacity: 1;
-    }
-  }
-
+	@mixin pcscreen {
+		&:hover {
+			opacity: 0.5;
+		}
+	}
 }

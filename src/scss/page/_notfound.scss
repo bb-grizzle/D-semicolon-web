@@ -1,0 +1,7 @@
+.Notfound {
+	@include paddingHeader;
+	height: $height-full;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

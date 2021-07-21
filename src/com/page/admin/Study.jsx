@@ -16,6 +16,8 @@ const COL = "study";
 const Study = () => {
 	const { data, setData, options, setOptions } = useStudy();
 	const titleInput = useInput("");
+
+	const linkInput = useInput("");
 	const fileInput = useFileInput();
 	const contentsInput = useInput("");
 	const categoryInput = useDropdownInput(options);
@@ -41,7 +43,7 @@ const Study = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (!titleInput.value || !fileInput.value.fileName || contentsArr.length === 0 || !categoryInput.value) {
+		if (!titleInput.value || (!fileInput.value.fileName && !linkInput.value) || contentsArr.length === 0 || !categoryInput.value) {
 			alert("양식을 모두 채워주세요. 🤥");
 			return;
 		}
@@ -51,12 +53,13 @@ const Study = () => {
 			const uploadData = {
 				title: titleInput.value,
 				category: categoryInput.value,
-				contents: contentsArr
+				link: linkInput.value,
+				contents: contentsArr,
 			};
 
 			if (!options.includes(categoryInput.value)) {
 				await fbUpdateData(COL, "init", {
-					option: [...options, categoryInput.value]
+					option: [...options, categoryInput.value],
 				});
 				setOptions((n) => [...n, categoryInput.value]);
 			}
@@ -70,7 +73,7 @@ const Study = () => {
 
 				const newData = {
 					...uploadData,
-					file
+					file,
 				};
 				// 데이터 업로드
 				await fbUpdateData(COL, id, newData);
@@ -79,11 +82,11 @@ const Study = () => {
 					n[uploadData.category]
 						? {
 								...n,
-								[uploadData.category]: [{ ...newData, id }, ...n[uploadData.category]]
+								[uploadData.category]: [{ ...newData, id }, ...n[uploadData.category]],
 						  }
 						: {
 								...n,
-								[uploadData.category]: [{ ...newData, id }]
+								[uploadData.category]: [{ ...newData, id }],
 						  }
 				);
 				alert("성공적으로 업로드 했어요 😆");
@@ -97,21 +100,26 @@ const Study = () => {
 							el.id === nowData.id
 								? {
 										...el,
-										...uploadData
+										...uploadData,
 								  }
 								: el
-						)
+						),
 					}));
 				} else {
-					const file = await fbUpdateStorage(nowData.file.prevUrl, `${COL}/${nowData.id}`, fileInput.value.fileName, fileInput.value.file);
+					let file;
+					if (nowData.file) {
+						file = await fbUpdateStorage(nowData.file.prevUrl, `${COL}/${nowData.id}`, fileInput.value.fileName, fileInput.value.file);
+					} else {
+						file = await fbUploadStorage(`${COL}/${nowData.id}`, fileInput.value.fileName, fileInput.value.file);
+					}
 
 					await fbUpdateData(COL, nowData.id, {
 						...uploadData,
-						file
+						file,
 					});
 					setData((n) => ({
 						...n,
-						[nowData.category]: n[nowData.category].map((el) => (el.id === nowData.id ? { ...el, ...uploadData, file } : el))
+						[nowData.category]: n[nowData.category].map((el) => (el.id === nowData.id ? { ...el, ...uploadData, file } : el)),
 					}));
 				}
 				alert("성공적으로 수정 했어요 😆");
@@ -122,14 +130,17 @@ const Study = () => {
 
 		initAdmin();
 	};
+
 	const handleContentsClick = () => {
 		if (!contentsInput.value) return;
 		setContentsArr((n) => n.concat(contentsInput.value));
 		contentsInput.setValue("");
 	};
+
 	const handleContentsCancleClick = (index) => {
 		setContentsArr((n) => n.filter((el, i) => i !== index));
 	};
+
 	const handleDeleteClick = async (e, id) => {
 		e.stopPropagation();
 
@@ -151,7 +162,7 @@ const Study = () => {
 			await fbDeleteData(COL, id);
 			setData((n) => ({
 				...n,
-				[category]: n[category].filter((el) => el.id !== id)
+				[category]: n[category].filter((el) => el.id !== id),
 			}));
 			alert("삭제 되었어요...");
 		} catch (err) {
@@ -162,12 +173,19 @@ const Study = () => {
 		setNowData(data);
 
 		titleInput.setValue(data.title);
-		fileInput.setValue((n) => ({
-			...n,
-			fileName: data.file.fileName,
-			url: data.file.url,
-			prevUrl: data.file.prevUrl
-		}));
+
+		if (data.file) {
+			fileInput.setValue((n) => ({
+				...n,
+				fileName: data.file.fileName,
+				url: data.file.url,
+				prevUrl: data.file.prevUrl,
+			}));
+		}
+		if (data.link) {
+			linkInput.setValue(data.link);
+		}
+
 		categoryInput.setValue(data.category);
 		setContentsArr(data.contents);
 	};
@@ -176,10 +194,12 @@ const Study = () => {
 		titleInput.setValue("");
 		fileInput.initFile();
 		contentsInput.setValue("");
+		linkInput.setValue("");
 		categoryInput.setIsAddClick(false);
 		setContentsArr([]);
 		setLoading(false);
 	};
+
 	const initAdmin = () => {
 		initForm();
 		setNowData(null);
@@ -190,8 +210,9 @@ const Study = () => {
 		{ ...titleInput, label: "title" },
 		{ ...categoryInput, label: "category", type: "dropdown" },
 		{ ...fileInput, label: "file", type: "file" },
+		{ ...linkInput, label: "link", type: "url" },
 		{ ...contentsInput, label: "contents", type: "text-with-btn", onClick: handleContentsClick },
-		{ value: contentsArr, type: "text-array", onClick: handleContentsCancleClick }
+		{ value: contentsArr, type: "text-array", onClick: handleContentsCancleClick },
 	];
 
 	return (

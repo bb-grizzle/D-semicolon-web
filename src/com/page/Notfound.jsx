@@ -1,11 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const Notfound = () => {
-  return (
-    <section className="Notfound">
-      Notfound
-    </section>
-  );
-}
+	return <section className="Notfound">*** Not found ***</section>;
+};
 
 export default Notfound;

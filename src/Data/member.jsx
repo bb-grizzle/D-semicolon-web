@@ -4,12 +4,14 @@ import { arrayReverseObj } from "../fn/default";
 const COL = "member";
 export const LINK_KEY_INITIAL = ["web", "behance", "instagram", "facebook", "github"];
 
-export const useMember = () => {
+export const useMember = (order, desc) => {
+	const [origin, setOrigin] = useState();
 	const [data, setData] = useState();
 
 	useEffect(() => {
 		const get = async () => {
-			const res = await fbGetData(COL, "grade", "desc");
+			const res = await fbGetData(COL, order || "grade", desc || "desc");
+			setOrigin(res);
 			let filtered = {};
 			res.forEach((el) => {
 				filtered[el.grade] = filtered[el.grade] ? [...filtered[el.grade], el] : [el];
@@ -26,7 +28,7 @@ export const useMember = () => {
 		};
 	}, []);
 
-	return { data, setData };
+	return { data, setData, origin };
 };
 
 export const useContactMember = () => {
@@ -58,5 +60,5 @@ export const MEMBER_INIT = {
 	profile: null,
 	email: "",
 	tell: "",
-	contact: null
+	contact: null,
 };

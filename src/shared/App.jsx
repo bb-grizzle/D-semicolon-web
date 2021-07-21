@@ -2,7 +2,7 @@ import React, { useState, useEffect, createContext } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 
 // page
-import { Home, Study, Member, Contact, Notfound } from "com/page";
+import { Home, Study, Member, Contact, Notfound, Project } from "com/page";
 import Admin from "com/page/admin";
 
 // component
@@ -62,7 +62,7 @@ function App() {
 				headData={{
 					description: "Designers Coding",
 					title: "D-semicolon",
-					url: "https://d-semicolon.web.app/"
+					url: "https://d-semicolon.web.app/",
 				}}
 			/>
 			<AdminProvider>
@@ -75,6 +75,7 @@ function App() {
 						<Route exact path="/" component={Home} />
 						<Route path="/about" component={Home} />
 						<Route path="/study" component={Study} />
+						<Route path="/project" component={Project} />
 						<Route path="/member" component={Member} />
 						<Route path="/contact" component={Contact} />
 						<Route path="/_admin" component={Admin} />

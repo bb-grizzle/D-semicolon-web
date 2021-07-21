@@ -1,23 +1,28 @@
 .StudylistDefault {
-  .header {
-    @include h3;
-    text-transform: capitalize;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    padding-right: 2rem;
+	.header {
+		@include h3;
+		text-transform: capitalize;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 1rem;
+		padding-right: 2rem;
+		word-break: keep-all;
 
-    @include screen-md {
-      padding-right: 0;
-    }
-  }
+		@include screen-md {
+			padding-right: 0;
+		}
+	}
 
-  .body {
-    @include p-default;
+	.btn-wrapper {
+		display: flex;
+	}
 
-    .text {
-      color: $color-gray-default;
-      font-size: 1rem;
-    }
-  }
+	.body {
+		@include p-default;
+
+		.text {
+			color: $color-gray-default;
+			font-size: 1rem;
+		}
+	}
 }

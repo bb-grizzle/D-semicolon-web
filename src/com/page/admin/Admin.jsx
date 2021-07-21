@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import { Route, useHistory } from "react-router-dom";
 import Study from "./Study";
 import Member from "./Member";
+import Project from "./Project";
 import { IsUserLogin } from "../../context/AdminProvider";
 const Admin = () => {
 	const {
 		push,
-		location: { pathname }
+		location: { pathname },
 	} = useHistory();
 	const islogin = IsUserLogin();
 
@@ -26,6 +27,7 @@ const Admin = () => {
 		<div className="pageWrapper">
 			<div className="con-small">
 				<Route path="/_admin/study" component={Study} />
+				<Route path="/_admin/project" component={Project} />
 				<Route path="/_admin/member" component={Member} />
 			</div>
 		</div>

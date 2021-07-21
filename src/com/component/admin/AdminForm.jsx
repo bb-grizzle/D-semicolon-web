@@ -9,6 +9,9 @@ import FormTag from "./FormTag";
 import InputDropdown from "../input/InputDropdown";
 import InputKeyValue from "../input/InputKeyValue";
 import InputCheck from "../input/InputCheck";
+import InputFileWithImage from "../input/InputFileWithImage";
+import InputUserList from "../input/InputUserList";
+import InputTag from "../input/InputTag";
 
 const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 	const nowAction = useNowAction();
@@ -31,6 +34,8 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 								return <InputDefault {...el} key={index} onClick={el.onClick} placeholder={el.label} />;
 							case "dropdown":
 								return <InputDropdown {...el} key={index} placeholder={el.label} />;
+							case "userlist":
+								return <InputUserList {...el} key={index} />;
 							case "text-array":
 								return (
 									<div className="wrapper-formTag inputItem" key={index}>
@@ -41,10 +46,14 @@ const AdminForm = ({ title, onSubmit, contents, initForm }) => {
 								);
 							case "file":
 								return <InputFile {...el} key={index} thumbnail={el.thumbnail} />;
+							case "file-image":
+								return <InputFileWithImage {...el} key={index} thumbnail={el.thumbnail} />;
 							case "check":
 								return <InputCheck {...el} key={index} label={el.label} text={el.text} />;
 							case "key-value":
 								return <InputKeyValue {...el} key={index} />;
+							case "tag":
+								return <InputTag {...el} key={index} />;
 							default:
 								return <InputDefault {...el} key={index} placeholder={el.label} type={el.inputType} maxLength={el.maxLength} />;
 						}
@@ -60,7 +69,7 @@ AdminForm.propTypes = {
 	title: PropTypes.string.isRequired,
 	onSubmit: PropTypes.func.isRequired,
 	contents: PropTypes.array.isRequired,
-	initForm: PropTypes.func.isRequired
+	initForm: PropTypes.func.isRequired,
 };
 
 export default AdminForm;

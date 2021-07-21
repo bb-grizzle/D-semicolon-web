@@ -14,6 +14,10 @@
     - [x] delete
   - [x] contact
     - [x] add
+    - [x] delete]
+  - [ ] project
+    - [x] add
+    - [x] edit
     - [x] delete
 
 - etc
@@ -28,4 +32,4 @@
   - [x] upload memeber issue
   - [x] member | delete link
   - [x] loading when member upload
-  - [ ] Can't perform a React state update on an unmounted component. issue
+  - [x] study | add link

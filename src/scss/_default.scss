@@ -1,214 +1,202 @@
-// - DEFAULT - 
+// - DEFAULT -
 * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
 
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 img {
-  vertical-align: top;
+	vertical-align: top;
 }
 
 input,
 select,
 option {
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  outline: none;
-  border: 0;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	outline: none;
+	border: 0;
 }
 
 a {
-  color: inherit;
+	color: inherit;
 }
 
 @mixin border-test-b {
-  border: 2px solid black;
+	border: 2px solid black;
 }
 
 @mixin border-test-r {
-  border: 2px solid red;
+	border: 2px solid red;
 }
 
-
-// - FONT - 
+// - FONT -
 html {
-  @include screen-md {
-    font-size: 14px;
-  }
+	@include screen-md {
+		font-size: 14px;
+	}
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  background-color: $color-gray-light;
+	font-family: "Source Sans Pro", sans-serif;
+	background-color: $color-gray-light;
 }
 
-// - ITEM - 
+// - ITEM -
 .div::after {
-  content: '';
-  display: block;
-  height: 1px;
-  color: $color-main;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: $color-main;
+	content: "";
+	display: block;
+	height: 1px;
+	color: $color-main;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: $color-main;
 }
 
-// - LAYOUT - 
+// - LAYOUT -
 .con {
-  width: 1200px;
-  max-width: 90%;
-  margin: 0 auto;
-
+	width: 1200px;
+	max-width: 90%;
+	margin: 0 auto;
 }
 
 .con-small {
-  width: 700px;
-  max-width: 90%;
-  margin: 0 auto;
+	width: 700px;
+	max-width: 90%;
+	margin: 0 auto;
 
+	&.x2 {
+		width: 500px;
 
+		@include screen-md {
+			width: 90%;
+		}
+	}
 
-  &.x2 {
-    width: 500px;
-
-    @include screen-md {
-      width: 90%;
-    }
-  }
-
-  @include screen-md {
-    width: 90%;
-  }
+	@include screen-md {
+		width: 90%;
+	}
 }
 
 @mixin floatingBtn {
-  position: fixed;
-  right: 40px;
-  bottom: 40px;
-  width: 64px;
-  height: 64px;
+	position: fixed;
+	right: 40px;
+	bottom: 40px;
+	width: 64px;
+	height: 64px;
 
-  @include screen-md {
-    right: 24px;
-    bottom: 24px;
-    width: 56px;
-    height: 56px;
-  }
+	@include screen-md {
+		right: 24px;
+		bottom: 24px;
+		width: 56px;
+		height: 56px;
+	}
 }
 
-
 @mixin display-mobile {
-  display: none;
+	display: none;
 
-  @include screen-md {
-    display: block;
-  }
+	@include screen-md {
+		display: block;
+	}
 }
 
 @mixin center-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 @mixin hideScroll {
-  /* Hide scrollbar for IE and Edge */
-  -ms-overflow-style: none;
+	/* Hide scrollbar for IE and Edge */
+	-ms-overflow-style: none;
 
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  &::-webkit-scrollbar {
-    display: none;
-  }
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 @mixin fullBg {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 @mixin listUnderline {
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 5px;
-    right: 0;
-    height: 2px;
-    background-color: $color-main;
+	&::after {
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		bottom: 5px;
+		right: 0;
+		height: 2px;
+		background-color: $color-main;
 
-    @include screen-md {
-      bottom: 2px;
-      height: 1px;
-    }
-  }
-
-
+		@include screen-md {
+			bottom: 2px;
+			height: 1px;
+		}
+	}
 }
 
 @mixin paddingHeader {
-  padding-top: $height-headerLogo-pc;
+	padding-top: $height-headerLogo-pc;
 
-
-  @include screen-md {
-    padding-top: $height-headerLogo-pc;
-  }
-
+	@include screen-md {
+		padding-top: $height-headerLogo-pc;
+	}
 }
 
 .paddingHeader {
-  @include paddingHeader;
+	@include paddingHeader;
 }
 
-
 @mixin paddingDefualt {
-  padding-top: $height-headerLogo-pc + 100px;
-  min-height: 100vh;
+	padding-top: $height-headerLogo-pc + 100px;
+	min-height: 100vh;
 
-  @include screen-md {
-    padding-top: $height-headerLogo-mobile;
-
-  }
+	@include screen-md {
+		padding-top: $height-headerLogo-mobile;
+	}
 }
 
 .paddingDefualt {
-  @include paddingDefualt;
+	@include paddingDefualt;
 }
-
 
 // transition
 @mixin transition-default {
-  transition: all .3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
-$transition-default : all .3s ease-in-out;
+$transition-default: all 0.3s ease-in-out;
 
 @mixin inputStyle {
-  padding: 10px 12px;
-  font-size: 16px;
+	padding: 10px 12px;
+	font-size: 16px;
 }
 
 .inputItem {
-  margin-bottom: 16px;
+	margin-bottom: 16px;
 
-  &:nth-last-child(2) {
-    margin-bottom: 40px;
-  }
+	&:nth-last-child(2) {
+		margin-bottom: 40px;
+	}
 }
 
 @mixin prevent-event {
-  user-select: none;
-  pointer-events: none;
+	user-select: none;
+	pointer-events: none;
 }
 
 @mixin active-event {
-  user-select: initial;
-  pointer-events: initial;
+	user-select: initial;
+	pointer-events: initial;
 }

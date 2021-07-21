@@ -1,13 +1,15 @@
 .Avatar {
-  opacity: 0;
-  transition: $transition-default;
-  @include center_flex;
+	opacity: 0;
+	transition: $transition-default;
+	@include center_flex;
+	background-position: center;
+	background-size: cover;
 
-  .placeholder {
-    width: 100%;
-  }
+	.placeholder {
+		width: 100%;
+	}
 
-  &.active {
-    opacity: 1;
-  }
+	&.active {
+		opacity: 1;
+	}
 }

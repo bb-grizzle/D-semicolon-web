@@ -1,0 +1,18 @@
+.tag-wrapper {
+	display: flex;
+	margin-bottom: 16px;
+	overflow-y: auto;
+	@include hideScroll;
+
+	.tag {
+		padding: 8px;
+		border: 1px solid $color-main;
+		border-radius: 4px;
+		margin-right: 4px;
+		cursor: pointer;
+		opacity: 1;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}

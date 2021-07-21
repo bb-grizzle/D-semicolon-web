@@ -49,7 +49,7 @@ export const useStudy = () => {
 			originData.forEach((el) => {
 				filtered = {
 					...filtered,
-					[el.category]: filtered[el.category] ? [...filtered[el.category], el] : [el]
+					[el.category]: filtered[el.category] ? [...filtered[el.category], el] : [el],
 				};
 			});
 
